@@ -112,7 +112,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Internship-7-Library\Internship-7-Library.Data\Internship-7-Library.Data.csproj">
+    <ProjectReference Include="..\Internship-7-Library.Data\Internship-7-Library.Data.csproj">
       <Project>{1a3325ab-889c-4d2d-854d-0ac0e94cace1}</Project>
       <Name>Internship-7-Library.Data</Name>
     </ProjectReference>

@@ -12,9 +12,7 @@ namespace Internship_7_Library.Data.Entities
     public class LibraryContext : DbContext
     {
         public LibraryContext(DbContextOptions options) : base(options)
-        {
-            
-        }
+        {}
 
         public DbSet<Author> Authors { get; set; }
         public DbSet<Book> Books { get; set; }
@@ -24,7 +22,7 @@ namespace Internship_7_Library.Data.Entities
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["BloggingContext"].ConnectionString);
+            optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["LibraryDatabase"].ConnectionString);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -38,5 +36,7 @@ namespace Internship_7_Library.Data.Entities
                 .WithMany(m => m.Borrows)
                 .HasForeignKey(me => me.StudentId);
         }
+        
+
     }
 }

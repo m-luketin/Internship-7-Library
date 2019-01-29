@@ -77,10 +77,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Internship-7-Library.Domain\Internship-7-Library.Domain.csproj">
-      <Project>{fa17f421-8097-4ff2-92c1-ad34b7b23a00}</Project>
-      <Name>Internship-7-Library.Domain</Name>
-    </ProjectReference>
     <ProjectReference Include="Internship-7-Library.Data\Internship-7-Library.Data.csproj">
       <Project>{1a3325ab-889c-4d2d-854d-0ac0e94cace1}</Project>
       <Name>Internship-7-Library.Data</Name>
