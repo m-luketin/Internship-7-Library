@@ -4,6 +4,10 @@ namespace Internship_7_Library.Data.Entities.Models
 {
     public class Borrow
     {
+        public Borrow()
+        {
+            
+        }
         public int BorrowId { get; set; }
         public Book Book { get; set; }
         public int BookId { get; set; }

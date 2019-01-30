@@ -8,45 +8,44 @@ using Internship_7_Library.Data.Entities.Models;
 
 namespace Internship_7_Library.Domain.Repositories
 {
-    public class AuthorRepository
+    public class BookRepository
     {
-        public AuthorRepository(LibraryContext context)
+        public BookRepository(LibraryContext context)
         {
             _context = context;
         }
 
         private readonly LibraryContext _context;
 
-        public void CreateAuthor(Author authorToAdd)
+        public void CreateBook(Book bookToAdd)
         {
-            _context.Authors.Add(authorToAdd);
+            _context.Books.Add(bookToAdd);
             _context.SaveChanges();
         }
 
-        public Author ReadAuthor(int idToFind)
+        public Book ReadBook(int idToFind)
         {
-            return _context.Authors.Find(idToFind);
+            return _context.Books.Find(idToFind);
         }
 
-        public bool UpdateAuthor(int idOldAuthor, Author newAuthor)
+        public bool UpdateBook(int idOldBook, Book newBook)
         {
-            var flag = DeleteAuthor(idOldAuthor);
+            var flag = DeleteBook(idOldBook);
 
             if(flag)
-                CreateAuthor(newAuthor);
+                CreateBook(newBook);
 
             return flag;
         }
 
-        public bool DeleteAuthor(int idToDelete)
+        public bool DeleteBook(int idToDelete)
         {
-            if (_context.Authors.Find(idToDelete) == null)
+            if (_context.Books.Find(idToDelete) == null)
                 return false;
 
-            _context.Authors.Remove(_context.Authors.Find(idToDelete));
+            _context.Books.Remove(_context.Books.Find(idToDelete));
             _context.SaveChanges();
             return true;
         }
-
     }
 }

@@ -4,9 +4,8 @@ namespace Internship_7_Library.Data.Entities.Models
 {
     public class Author
     {
-        public Author(int authorId, string firstName, string lastName)
+        public Author(string firstName, string lastName)
         {
-            AuthorId = authorId;
             FirstName = firstName;
             LastName = lastName;
         }

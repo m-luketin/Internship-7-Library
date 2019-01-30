@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Internship_7_Library.Data.Entities;
+using Internship_7_Library.Data.Entities.Models;
+using Internship_7_Library.Domain.Repositories;
 
 namespace Internship_7_Library
 {
@@ -16,7 +19,15 @@ namespace Internship_7_Library
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            var libraryContext = new LibraryContext();
+            var publishers = new PublisherRepository(libraryContext);
+            var authors = new AuthorRepository(libraryContext);
+            var books = new BookRepository(libraryContext);
+            var borrows = new BorrowRepository(libraryContext);
+            var students = new StudentRepository(libraryContext);
+
+            publishers.CreatePublisher(new Publisher { Name = "Penguin"});
         }
     }
 }

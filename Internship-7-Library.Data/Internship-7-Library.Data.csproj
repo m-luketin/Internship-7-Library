@@ -138,6 +138,10 @@
     <Compile Include="Migrations\20190130095819_InitialCreate.designer.cs">
       <DependentUpon>20190130095819_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20190130184230_BooksEdited.cs" />
+    <Compile Include="Migrations\20190130184230_BooksEdited.designer.cs">
+      <DependentUpon>20190130184230_BooksEdited.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\LibraryContextModelSnapshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
