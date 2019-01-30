@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Internship_7_Library.Data.Entities.Models;
+﻿using Internship_7_Library.Data.Entities.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Configuration;
+using System.IO;
+using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.Extensions.Configuration;
 
 namespace Internship_7_Library.Data.Entities
 {
@@ -28,15 +26,22 @@ namespace Internship_7_Library.Data.Entities
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Borrow>()
-                .HasOne(me => me.Book)
-                .WithMany(m => m.Borrows)
-                .HasForeignKey(me => me.BookId);
+                .HasOne(brw => brw.Book)
+                .WithMany(bk => bk.Borrows)
+                .HasForeignKey(me => me.Book);
             modelBuilder.Entity<Borrow>()
-                .HasOne(me => me.Student)
-                .WithMany(m => m.Borrows)
-                .HasForeignKey(me => me.StudentId);
-        }
-        
+                .HasOne(brw => brw.Student)
+                .WithMany(s => s.Borrows)
+                .HasForeignKey(brw => brw.Student);
 
+            modelBuilder.Entity<Book>()
+                .HasOne(bk => bk.Author)
+                .WithMany(au => au.Books)
+                .HasForeignKey(bk => bk.Author);
+            modelBuilder.Entity<Book>()
+                .HasOne(bk => bk.Publisher)
+                .WithMany(pb => pb.Books)
+                .HasForeignKey(bk => bk.Publisher);
+        }
     }
 }
