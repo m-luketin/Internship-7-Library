@@ -134,6 +134,11 @@
     <Compile Include="Enums\Class.cs" />
     <Compile Include="Enums\Genre.cs" />
     <Compile Include="Enums\Sex.cs" />
+    <Compile Include="Migrations\20190130095819_InitialCreate.cs" />
+    <Compile Include="Migrations\20190130095819_InitialCreate.designer.cs">
+      <DependentUpon>20190130095819_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\LibraryContextModelSnapshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

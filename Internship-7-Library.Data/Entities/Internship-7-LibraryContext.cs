@@ -9,8 +9,6 @@ namespace Internship_7_Library.Data.Entities
 {
     public class LibraryContext : DbContext
     {
-        public LibraryContext(DbContextOptions options) : base(options)
-        {}
 
         public DbSet<Author> Authors { get; set; }
         public DbSet<Book> Books { get; set; }
@@ -28,20 +26,12 @@ namespace Internship_7_Library.Data.Entities
             modelBuilder.Entity<Borrow>()
                 .HasOne(brw => brw.Book)
                 .WithMany(bk => bk.Borrows)
-                .HasForeignKey(me => me.Book);
+                .HasForeignKey(me => me.BookId);
             modelBuilder.Entity<Borrow>()
                 .HasOne(brw => brw.Student)
                 .WithMany(s => s.Borrows)
-                .HasForeignKey(brw => brw.Student);
-
-            modelBuilder.Entity<Book>()
-                .HasOne(bk => bk.Author)
-                .WithMany(au => au.Books)
-                .HasForeignKey(bk => bk.Author);
-            modelBuilder.Entity<Book>()
-                .HasOne(bk => bk.Publisher)
-                .WithMany(pb => pb.Books)
-                .HasForeignKey(bk => bk.Publisher);
+                .HasForeignKey(brw => brw.StudentId);
+            
         }
     }
 }
