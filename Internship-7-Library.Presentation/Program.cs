@@ -9,13 +9,13 @@ using Internship_7_Library.Domain.Repositories;
 
 namespace Internship_7_Library
 {
-    static class Program
+    public static class Program
     {
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        private static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -27,7 +27,9 @@ namespace Internship_7_Library
             var borrows = new BorrowRepository(libraryContext);
             var students = new StudentRepository(libraryContext);
 
-            publishers.CreatePublisher(new Publisher { Name = "Penguin"});
+            publishers.CreatePublisher(new Publisher("Penguin"));
+
+            Console.WriteLine(libraryContext.Publishers);
         }
     }
 }

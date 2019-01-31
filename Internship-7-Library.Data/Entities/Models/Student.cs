@@ -6,13 +6,13 @@ namespace Internship_7_Library.Data.Entities.Models
 {
     public class Student
     {
-        public Student(string firstName, string lastName, DateTime birthDate, Sex sex, Class inClass)
+        public Student(string firstName, string lastName, DateTime birthDate, Sex sex, Class studentClass)
         {
             FirstName = firstName;
             LastName = lastName;
             BirthDate = birthDate;
             Sex = sex;
-            Class = inClass;
+            Class = studentClass;
         }
         public int StudentId { get; set; }
         public string FirstName { get; set; }
