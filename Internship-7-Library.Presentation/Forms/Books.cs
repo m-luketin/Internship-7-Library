@@ -41,6 +41,24 @@ namespace Internship_7_Library.Forms
             }
         }
 
+        private void LoadInfo()
+        {
+            InfoBox.Items.Clear();
+            if (BooksListBox.CheckedItems.Any())
+            {
+                foreach (var book in _books.GetBooksList())
+                {
+                    if (book.Name == BooksListBox.CheckedItems[0].ToString())
+                    {
+                        InfoBox.Items.Add($"Author:                   {book.Author}");
+                        InfoBox.Items.Add($"Publisher:               {book.Publisher}");
+                        InfoBox.Items.Add($"Number of pages:  {book.NumberOfPages.ToString()}");
+                        InfoBox.Items.Add($"Number of copies: {book.NumberOfBooks.ToString()}");
+                        InfoBox.Items.Add($"Genre:                   {book.Genre.ToString()}");
+                    }   
+                }
+            }
+        }
         private void AddButton_Click(object sender, EventArgs e)
         {
             var addBook = new AddBook(_books, _authors, _publishers);
@@ -56,6 +74,34 @@ namespace Internship_7_Library.Forms
             }
 
             LoadForm();
+        }
+
+        private void EditButton_Click(object sender, EventArgs e)
+        {
+            if (BooksListBox.CheckedItems.Any())
+            {
+                var editBook = new EditBook(BooksListBox.CheckedItems[0].ToString(), _books, _authors, _publishers);
+                editBook.ShowDialog();
+                LoadForm();
+            }
+            
+        }
+
+        private void BooksListBox_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            if (e.NewValue == CheckState.Checked)
+            {
+                for (var index = 0; index < BooksListBox.Items.Count; ++index)
+                {
+                    if (e.Index != index)
+                        BooksListBox.SetItemChecked(index, false);
+                }
+            }
+        }
+
+        private void BooksListBox_MouseMove(object sender, MouseEventArgs e)
+        {
+            LoadInfo();
         }
     }
 }

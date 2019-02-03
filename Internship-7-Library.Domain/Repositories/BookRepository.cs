@@ -39,9 +39,26 @@ namespace Internship_7_Library.Domain.Repositories
             return null;
         }
 
-        public void UpdateBook()
+        public bool UpdateBook(string oldName, Book newBook)
         {
+            var flag = false;
             
+            foreach (var book in _context.Books)
+            {
+                if (oldName == book.Name)
+                {
+                    book.Name = newBook.Name;
+                    book.Author = newBook.Author;
+                    book.Publisher = newBook.Publisher;
+                    book.NumberOfPages = newBook.NumberOfPages;
+                    book.NumberOfBooks = newBook.NumberOfBooks;
+                    book.Genre = newBook.Genre;
+                    flag = true;
+                }
+            }
+
+            _context.SaveChanges();
+            return flag;
         }
 
         public bool DeleteBook(string nameToDelete)

@@ -31,6 +31,19 @@ namespace Internship_7_Library.Forms
                 AuthorsListBox.Items.Add(author);
             }
         }
+        private void LoadBooks()
+        {
+            BookBox.Items.Clear();
+            if (AuthorsListBox.CheckedItems.Any())
+            {
+                foreach (var book in _books.GetBooksList())
+                {
+                    if (book.Author.ToString() == AuthorsListBox.CheckedItems[0].ToString())
+                        BookBox.Items.Add(book);
+                }
+            }
+
+        }
         private void AddButton_Click(object sender, EventArgs e)
         {
             var addAuthor = new AddAuthor(_authors);
@@ -47,14 +60,6 @@ namespace Internship_7_Library.Forms
                 {
                     if (e.Index != index)
                         AuthorsListBox.SetItemChecked(index, false);
-                    else
-                    {
-                        foreach (var book in _books.GetBooksList())
-                        {
-                            if (book.ToString() == e.CurrentValue.ToString())
-                                BookBox.Items.Add(book);
-                        }
-                    }
                 }
             }   
         }
@@ -79,6 +84,9 @@ namespace Internship_7_Library.Forms
             LoadForm();
         }
 
-        
+        private void AuthorsListBox_MouseMove(object sender, MouseEventArgs e)
+        {
+            LoadBooks();
+        }
     }
 }

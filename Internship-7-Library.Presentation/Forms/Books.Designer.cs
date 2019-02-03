@@ -41,7 +41,7 @@
             this.InfoBox.ItemHeight = 16;
             this.InfoBox.Location = new System.Drawing.Point(484, 23);
             this.InfoBox.Name = "InfoBox";
-            this.InfoBox.Size = new System.Drawing.Size(158, 404);
+            this.InfoBox.Size = new System.Drawing.Size(239, 404);
             this.InfoBox.TabIndex = 14;
             // 
             // DeleteButton
@@ -72,6 +72,7 @@
             this.EditButton.TabIndex = 11;
             this.EditButton.Text = "Edit";
             this.EditButton.UseVisualStyleBackColor = true;
+            this.EditButton.Click += new System.EventHandler(this.EditButton_Click);
             // 
             // BooksListBox
             // 
@@ -80,6 +81,8 @@
             this.BooksListBox.Name = "BooksListBox";
             this.BooksListBox.Size = new System.Drawing.Size(165, 395);
             this.BooksListBox.TabIndex = 10;
+            this.BooksListBox.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.BooksListBox_ItemCheck);
+            this.BooksListBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.BooksListBox_MouseMove);
             // 
             // Books
             // 

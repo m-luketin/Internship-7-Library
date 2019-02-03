@@ -82,6 +82,7 @@
             this.AuthorsListBox.Size = new System.Drawing.Size(165, 395);
             this.AuthorsListBox.TabIndex = 5;
             this.AuthorsListBox.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.AuthorsListBox_ItemCheck);
+            this.AuthorsListBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.AuthorsListBox_MouseMove);
             // 
             // Authors
             // 

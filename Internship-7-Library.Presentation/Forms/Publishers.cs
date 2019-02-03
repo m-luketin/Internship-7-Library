@@ -52,8 +52,8 @@ namespace Internship_7_Library.Forms
                         PublishersListBox.SetItemChecked(index, false);
                     
                 }
-            LoadBooks();
 
+            LoadBooks();
         }
 
         private void AddButton_Click(object sender, EventArgs e)
@@ -85,8 +85,11 @@ namespace Internship_7_Library.Forms
         }
 
         private void PublishersListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {}
+
+        private void PublishersListBox_MouseMove(object sender, MouseEventArgs e)
         {
-            
+            LoadBooks();
         }
     }
 }
