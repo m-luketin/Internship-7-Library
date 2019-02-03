@@ -11,5 +11,12 @@ namespace Internship_7_Library.Data.Entities.Models
         public int PublisherId { get; set; }
         public string Name { get; set; }
         public ICollection<Book> Books { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Name}";
+        }
     }
+
+    
 }

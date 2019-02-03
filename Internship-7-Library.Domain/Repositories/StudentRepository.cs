@@ -17,10 +17,14 @@ namespace Internship_7_Library.Domain.Repositories
 
         private readonly LibraryContext _context;
 
-        public void CreateStudent(Student studentToAdd)
+        public bool CreateStudent(Student studentToAdd)
         {
+            if (Enumerable.Any(_context.Students, student => studentToAdd.FirstName == student.FirstName && studentToAdd.LastName == student.LastName))
+                return false;
+
             _context.Students.Add(studentToAdd);
             _context.SaveChanges();
+            return true;
         }
 
         public Student ReadStudent(int idToFind)

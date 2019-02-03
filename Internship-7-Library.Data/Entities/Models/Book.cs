@@ -5,11 +5,12 @@ namespace Internship_7_Library.Data.Entities.Models
 {
     public class Book
     {
-        public Book(string name, int numberOfPages, int numberOfBooks)
+        public Book(string name, int numberOfPages, int numberOfBooks, Genre genre)
         {
             Name = name;
             NumberOfBooks = numberOfBooks;
             NumberOfPages = numberOfPages;
+            Genre = genre;
         }
         public int BookId { get; set; }
         public string Name { get; set; }
@@ -19,5 +20,11 @@ namespace Internship_7_Library.Data.Entities.Models
         public Author Author { get; set; }
         public Publisher Publisher { get; set; }
         public ICollection<Borrow> Borrows { get; set; }
+
+
+        public override string ToString()
+        {
+            return $"{Name}";
+        }
     }
 }

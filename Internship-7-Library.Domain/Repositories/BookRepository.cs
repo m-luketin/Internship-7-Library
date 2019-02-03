@@ -17,15 +17,25 @@ namespace Internship_7_Library.Domain.Repositories
 
         private readonly LibraryContext _context;
 
-        public void CreateBook(Book bookToAdd)
+        public bool CreateBook(Book bookToAdd)
         {
+            if (Enumerable.Any(_context.Books, book => bookToAdd.Name == book.Name))
+                return false;
+
             _context.Books.Add(bookToAdd);
             _context.SaveChanges();
+            return true;
         }
 
-        public Book ReadBook(int idToFind)
+        public Book ReadBook(string nameToFind)
         {
-            return _context.Books.Find(idToFind);
+            foreach (var book in _context.Books)
+            {
+                if (book.Name == nameToFind)
+                    return book;
+            }
+
+            return null;
         }
 
         public bool UpdateBook(int idOldBook, Book newBook)
@@ -46,6 +56,11 @@ namespace Internship_7_Library.Domain.Repositories
             _context.Books.Remove(_context.Books.Find(idToDelete));
             _context.SaveChanges();
             return true;
+        }
+
+        public List<Book> GetBooksList()
+        {
+            return _context.Books.Select(s => new Book(s.Name, s.NumberOfPages, s.NumberOfBooks, s.Genre)).ToList();
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Internship_7_Library.Data.Enums
 {
-    public enum Class
+    public enum Grade
     {
         FirstA,
         FirstB,

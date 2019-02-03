@@ -6,20 +6,20 @@ namespace Internship_7_Library.Data.Entities.Models
 {
     public class Student
     {
-        public Student(string firstName, string lastName, DateTime birthDate, Sex sex, Class studentClass)
+        public Student(string firstName, string lastName, DateTime birthDate, Sex sex, Grade grade)
         {
             FirstName = firstName;
             LastName = lastName;
             BirthDate = birthDate;
             Sex = sex;
-            Class = studentClass;
+            Grade = grade;
         }
         public int StudentId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime BirthDate { get; set; }
         public Sex Sex { get; set; } 
-        public Class Class { get; set; }
+        public Grade Grade { get; set; }
         public ICollection<Borrow> Borrows { get; set; }
     }
 }
