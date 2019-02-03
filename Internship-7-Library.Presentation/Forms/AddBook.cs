@@ -41,9 +41,12 @@ namespace Internship_7_Library.Forms
         private readonly PublisherRepository _publishers;
         private readonly BorrowRepository _borrows;
 
+        
         private void SaveButton_Click(object sender, EventArgs e)
         {
-
+            var genre = (Genre) Enum.Parse(typeof(Genre), GenreComboBox.Text);
+            _books.CreateBook(NameBox.Text, _authors.ReadAuthor(AuthorComboBox.Text), _publishers.ReadPublisher(PublisherComboBox.Text), int.Parse(PagesBox.Text), int.Parse(NumberOfBooksBox.Text), genre);
+            Close();
         }
     }
 }

@@ -63,8 +63,8 @@ namespace Internship_7_Library.Forms
         {
             if (AuthorsListBox.CheckedItems.Any())
             {
-                var name = ParseAuthor(AuthorsListBox.CheckedItems[0].ToString());
-                _authors.DeleteAuthor(name[0], name[1]);
+                var name = _authors.ParseAuthor(AuthorsListBox.CheckedItems[0].ToString());
+                _authors.DeleteAuthor($"{name[0]} {name[1]}");
             }
 
             LoadForm();
@@ -72,17 +72,13 @@ namespace Internship_7_Library.Forms
 
         private void EditButton_Click(object sender, EventArgs e)
         {
-            var name = ParseAuthor(AuthorsListBox.CheckedItems[0].ToString());
+            var name = _authors.ParseAuthor(AuthorsListBox.CheckedItems[0].ToString());
             
             var editAuthor = new EditAuthor(name[0], name[1], _authors);
             editAuthor.ShowDialog();
             LoadForm();
         }
 
-        private static List<string> ParseAuthor(string fullName)
-        {
-            var parts = fullName.Split(' ');
-            return new List<string> { string.Join(" ", parts.Take(parts.Length - 1)), parts.LastOrDefault()};
-        }
+        
     }
 }

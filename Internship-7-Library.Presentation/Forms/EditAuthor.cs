@@ -29,7 +29,7 @@ namespace Internship_7_Library.Forms
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            _authors.UpdateAuthor(_firstName, _lastName, FirstNameBox.Text, LastNameBox.Text);
+            _authors.UpdateAuthor($"{_firstName} {_lastName}", $"{FirstNameBox.Text} {LastNameBox.Text}");
             Close();
         }
     }

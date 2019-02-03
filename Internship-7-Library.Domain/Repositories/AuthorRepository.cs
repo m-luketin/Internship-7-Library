@@ -27,23 +27,26 @@ namespace Internship_7_Library.Domain.Repositories
             return true;
         }
 
-        public Author ReadAuthor(string firstName, string lastName)
+        public Author ReadAuthor(string fullName)
         {
-            return Enumerable.FirstOrDefault(_context.Authors, author => firstName == author.FirstName && lastName == author.LastName);
+            var name = ParseAuthor(fullName);
+            return Enumerable.FirstOrDefault(_context.Authors, author => name[0] == author.FirstName && name[1] == author.LastName);
         }
 
         
 
-        public bool UpdateAuthor(string oldFirstName, string oldLastName, string newFirstName, string newLastName)
+        public bool UpdateAuthor(string fullOldName, string fullNewName)
         {
             var flag = false;
+            var oldName = ParseAuthor(fullOldName);
+            var newName = ParseAuthor(fullNewName);
             foreach (var author in _context.Authors)
             {
-                if (oldFirstName == author.FirstName && oldLastName == author.LastName)
+                if (oldName[0] == author.FirstName && oldName[1] == author.LastName)
                 {
                     flag = true;
-                    author.FirstName = newFirstName;
-                    author.LastName = newLastName;
+                    author.FirstName = newName[0];
+                    author.LastName = newName[1];
                 }
             }
 
@@ -51,12 +54,13 @@ namespace Internship_7_Library.Domain.Repositories
             return flag;
         }
 
-        public bool DeleteAuthor(string firstName, string lastName)
+        public bool DeleteAuthor(string fullName)
         {
             var flag = false;
-            if (ReadAuthor(firstName, lastName) != null)
+            var name = ParseAuthor(fullName);
+            if (ReadAuthor($"{name[0]} {name[1]}") != null)
             {
-                _context.Authors.Remove(ReadAuthor(firstName,lastName));
+                _context.Authors.Remove(ReadAuthor($"{name[0]} {name[1]}"));
                 _context.SaveChanges();
                 flag = true;
             }
@@ -66,6 +70,12 @@ namespace Internship_7_Library.Domain.Repositories
         public List<Author> GetAuthorList()
         {
             return _context.Authors.Select(s => new Author(s.FirstName, s.LastName)).ToList();
+        }
+
+        public List<string> ParseAuthor(string fullName)
+        {
+            var parts = fullName.Split(' ');
+            return new List<string>{ string.Join(" ", parts.Take(parts.Length - 1)) , parts.LastOrDefault()};
         }
     }
 }

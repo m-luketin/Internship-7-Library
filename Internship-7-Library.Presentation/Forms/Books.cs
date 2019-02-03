@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Internship_7_Library.Domain.Repositories;
+using Microsoft.EntityFrameworkCore.Internal;
 
 namespace Internship_7_Library.Forms
 {
@@ -33,13 +34,28 @@ namespace Internship_7_Library.Forms
 
         private void LoadForm()
         {
-
+            BooksListBox.Items.Clear();
+            foreach (var book in _books.GetBooksList())
+            {
+                BooksListBox.Items.Add(book.ToString());
+            }
         }
 
         private void AddButton_Click(object sender, EventArgs e)
         {
             var addBook = new AddBook(_books, _authors, _publishers);
             addBook.ShowDialog();
+            LoadForm();
+        }
+
+        private void DeleteButton_Click(object sender, EventArgs e)
+        {
+            if (BooksListBox.CheckedItems.Any())
+            {
+                _books.DeleteBook(BooksListBox.CheckedItems[0].ToString());
+            }
+
+            LoadForm();
         }
     }
 }

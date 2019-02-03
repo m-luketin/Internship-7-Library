@@ -43,6 +43,7 @@
             this.PublishersListBox.Size = new System.Drawing.Size(165, 395);
             this.PublishersListBox.TabIndex = 0;
             this.PublishersListBox.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.PublishersListBox_ItemCheck);
+            this.PublishersListBox.SelectedIndexChanged += new System.EventHandler(this.PublishersListBox_SelectedIndexChanged);
             // 
             // EditButton
             // 

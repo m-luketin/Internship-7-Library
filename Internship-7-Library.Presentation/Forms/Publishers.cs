@@ -21,13 +21,27 @@ namespace Internship_7_Library.Forms
         private readonly PublisherRepository _publishers;
         private readonly BookRepository _books;
 
-        private void LoadForm(PublisherRepository publishersRepo)
+        private void LoadForm()
         {
             PublishersListBox.Items.Clear();
-            foreach (var publisher in publishersRepo.GetPublisherList())
+            foreach (var publisher in _publishers.GetPublisherList())
             {
                 PublishersListBox.Items.Add(publisher.ToString());
             }
+        }
+
+        private void LoadBooks()
+        {
+            BookBox.Items.Clear();
+            if (PublishersListBox.CheckedItems.Any())
+            {
+                foreach (var book in _books.GetBooksList())
+                {
+                    if (book.Publisher.ToString() == PublishersListBox.CheckedItems[0].ToString())
+                        BookBox.Items.Add(book);
+                }
+            }
+            
         }
         private void PublishersListBox_ItemCheck(object sender, ItemCheckEventArgs e)
         {
@@ -36,16 +50,9 @@ namespace Internship_7_Library.Forms
                 {
                     if (e.Index != index)
                         PublishersListBox.SetItemChecked(index, false);
-                    else
-                    {
-                        foreach (var book in _books.GetBooksList())
-                        {
-                            if (book.ToString() == e.CurrentValue.ToString())
-                                BookBox.Items.Add(book);
-                        }
-                    }
+                    
                 }
-                
+            LoadBooks();
 
         }
 
@@ -53,7 +60,7 @@ namespace Internship_7_Library.Forms
         {
             var addPublisher = new AddPublisher(_publishers);
             addPublisher.ShowDialog();
-            LoadForm(_publishers);
+            LoadForm();
         }
 
         private void DeleteButton_Click(object sender, EventArgs e)
@@ -63,7 +70,7 @@ namespace Internship_7_Library.Forms
                 _publishers.DeletePublisher(PublishersListBox.CheckedItems[0].ToString());
             }
 
-            LoadForm(_publishers);
+            LoadForm();
         }
 
         private void EditButton_Click(object sender, EventArgs e)
@@ -72,8 +79,13 @@ namespace Internship_7_Library.Forms
             {
                 var editForm = new EditPublisher(PublishersListBox.CheckedItems[0].ToString(), _publishers);
                 editForm.ShowDialog();
-                LoadForm(_publishers);
+                LoadForm();
             }
+            
+        }
+
+        private void PublishersListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
             
         }
     }
