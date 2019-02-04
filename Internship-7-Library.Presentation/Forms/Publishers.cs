@@ -50,9 +50,7 @@ namespace Internship_7_Library.Forms
                 {
                     if (e.Index != index)
                         PublishersListBox.SetItemChecked(index, false);
-                    
                 }
-
             LoadBooks();
         }
 

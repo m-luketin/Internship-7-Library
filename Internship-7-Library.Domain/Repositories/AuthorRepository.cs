@@ -33,8 +33,6 @@ namespace Internship_7_Library.Domain.Repositories
             return Enumerable.FirstOrDefault(_context.Authors, author => name[0] == author.FirstName && name[1] == author.LastName);
         }
 
-        
-
         public bool UpdateAuthor(string fullOldName, string fullNewName)
         {
             var flag = false;

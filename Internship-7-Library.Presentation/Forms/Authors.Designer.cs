@@ -37,49 +37,59 @@
             // 
             // BookBox
             // 
+            this.BookBox.BackColor = System.Drawing.SystemColors.InfoText;
+            this.BookBox.ForeColor = System.Drawing.SystemColors.Info;
             this.BookBox.FormattingEnabled = true;
             this.BookBox.ItemHeight = 16;
-            this.BookBox.Location = new System.Drawing.Point(459, 7);
+            this.BookBox.Location = new System.Drawing.Point(532, 12);
             this.BookBox.Name = "BookBox";
-            this.BookBox.Size = new System.Drawing.Size(158, 404);
+            this.BookBox.Size = new System.Drawing.Size(158, 356);
             this.BookBox.TabIndex = 9;
             // 
             // DeleteButton
             // 
-            this.DeleteButton.Location = new System.Drawing.Point(320, 272);
+            this.DeleteButton.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.DeleteButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.DeleteButton.Location = new System.Drawing.Point(413, 289);
             this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Size = new System.Drawing.Size(121, 79);
+            this.DeleteButton.Size = new System.Drawing.Size(113, 79);
             this.DeleteButton.TabIndex = 8;
             this.DeleteButton.Text = "Delete";
-            this.DeleteButton.UseVisualStyleBackColor = true;
+            this.DeleteButton.UseVisualStyleBackColor = false;
             this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
             // AddButton
             // 
-            this.AddButton.Location = new System.Drawing.Point(320, 67);
+            this.AddButton.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.AddButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.AddButton.Location = new System.Drawing.Point(184, 289);
             this.AddButton.Name = "AddButton";
-            this.AddButton.Size = new System.Drawing.Size(121, 79);
+            this.AddButton.Size = new System.Drawing.Size(113, 79);
             this.AddButton.TabIndex = 7;
             this.AddButton.Text = "Add";
-            this.AddButton.UseVisualStyleBackColor = true;
+            this.AddButton.UseVisualStyleBackColor = false;
             this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
             // EditButton
             // 
-            this.EditButton.Location = new System.Drawing.Point(320, 166);
+            this.EditButton.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.EditButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.EditButton.Location = new System.Drawing.Point(298, 289);
             this.EditButton.Name = "EditButton";
-            this.EditButton.Size = new System.Drawing.Size(121, 79);
+            this.EditButton.Size = new System.Drawing.Size(113, 79);
             this.EditButton.TabIndex = 6;
             this.EditButton.Text = "Edit";
-            this.EditButton.UseVisualStyleBackColor = true;
+            this.EditButton.UseVisualStyleBackColor = false;
             this.EditButton.Click += new System.EventHandler(this.EditButton_Click);
             // 
             // AuthorsListBox
             // 
+            this.AuthorsListBox.BackColor = System.Drawing.SystemColors.InfoText;
+            this.AuthorsListBox.ForeColor = System.Drawing.SystemColors.Info;
             this.AuthorsListBox.FormattingEnabled = true;
-            this.AuthorsListBox.Location = new System.Drawing.Point(133, 7);
+            this.AuthorsListBox.Location = new System.Drawing.Point(13, 7);
             this.AuthorsListBox.Name = "AuthorsListBox";
-            this.AuthorsListBox.Size = new System.Drawing.Size(165, 395);
+            this.AuthorsListBox.Size = new System.Drawing.Size(165, 361);
             this.AuthorsListBox.TabIndex = 5;
             this.AuthorsListBox.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.AuthorsListBox_ItemCheck);
             this.AuthorsListBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.AuthorsListBox_MouseMove);
@@ -88,7 +98,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(751, 418);
+            this.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.ClientSize = new System.Drawing.Size(706, 379);
             this.Controls.Add(this.BookBox);
             this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.AddButton);

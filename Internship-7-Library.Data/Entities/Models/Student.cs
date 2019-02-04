@@ -21,5 +21,10 @@ namespace Internship_7_Library.Data.Entities.Models
         public Sex Sex { get; set; } 
         public Grade Grade { get; set; }
         public ICollection<Borrow> Borrows { get; set; }
+
+        public override string ToString()
+        {
+            return $"{FirstName} {LastName}";
+        }
     }
 }

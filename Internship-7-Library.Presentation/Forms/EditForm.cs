@@ -46,5 +46,11 @@ namespace Internship_7_Library.Forms
             var bookForm = new Books(_bookRepo, _authorRepo, _publisherRepo, _borrowRepo);
             bookForm.ShowDialog();
         }
+
+        private void StudentEdit_Click(object sender, EventArgs e)
+        {
+            var studentsForm = new Students(_studentRepo, _bookRepo, _borrowRepo);
+            studentsForm.ShowDialog();
+        }
     }
 }

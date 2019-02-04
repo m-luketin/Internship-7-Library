@@ -77,10 +77,14 @@ namespace Internship_7_Library.Forms
 
         private void EditButton_Click(object sender, EventArgs e)
         {
-            var name = _authors.ParseAuthor(AuthorsListBox.CheckedItems[0].ToString());
+            if (AuthorsListBox.CheckedItems.Any())
+            {
+                var name = _authors.ParseAuthor(AuthorsListBox.CheckedItems[0].ToString());
+
+                var editAuthor = new EditAuthor(name[0], name[1], _authors);
+                editAuthor.ShowDialog();
+            }
             
-            var editAuthor = new EditAuthor(name[0], name[1], _authors);
-            editAuthor.ShowDialog();
             LoadForm();
         }
 

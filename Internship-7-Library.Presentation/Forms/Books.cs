@@ -74,6 +74,7 @@ namespace Internship_7_Library.Forms
             }
 
             LoadForm();
+            LoadInfo();
         }
 
         private void EditButton_Click(object sender, EventArgs e)
@@ -82,9 +83,9 @@ namespace Internship_7_Library.Forms
             {
                 var editBook = new EditBook(BooksListBox.CheckedItems[0].ToString(), _books, _authors, _publishers);
                 editBook.ShowDialog();
-                LoadForm();
             }
-            
+            LoadForm();
+            LoadInfo();
         }
 
         private void BooksListBox_ItemCheck(object sender, ItemCheckEventArgs e)

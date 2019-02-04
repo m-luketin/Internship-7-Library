@@ -66,6 +66,12 @@
     <Compile Include="Forms\AddPublisher.Designer.cs">
       <DependentUpon>AddPublisher.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\AddStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddStudent.Designer.cs">
+      <DependentUpon>AddStudent.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Authors.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +83,12 @@
     </Compile>
     <Compile Include="Forms\Books.Designer.cs">
       <DependentUpon>Books.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Borrows.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Borrows.Designer.cs">
+      <DependentUpon>Borrows.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\EditAuthor.cs">
       <SubType>Form</SubType>
@@ -102,6 +114,12 @@
     <Compile Include="Forms\EditPublisher.Designer.cs">
       <DependentUpon>EditPublisher.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\EditStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EditStudent.Designer.cs">
+      <DependentUpon>EditStudent.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Publishers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +138,12 @@
     <Compile Include="Forms\StartMenu.Designer.cs">
       <DependentUpon>StartMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Students.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Students.Designer.cs">
+      <DependentUpon>Students.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\AddAuthor.resx">
@@ -131,11 +155,17 @@
     <EmbeddedResource Include="Forms\AddPublisher.resx">
       <DependentUpon>AddPublisher.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddStudent.resx">
+      <DependentUpon>AddStudent.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Authors.resx">
       <DependentUpon>Authors.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Books.resx">
       <DependentUpon>Books.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Borrows.resx">
+      <DependentUpon>Borrows.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\EditAuthor.resx">
       <DependentUpon>EditAuthor.cs</DependentUpon>
@@ -149,6 +179,9 @@
     <EmbeddedResource Include="Forms\EditPublisher.resx">
       <DependentUpon>EditPublisher.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EditStudent.resx">
+      <DependentUpon>EditStudent.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Publishers.resx">
       <DependentUpon>Publishers.cs</DependentUpon>
     </EmbeddedResource>
@@ -158,6 +191,9 @@
     <EmbeddedResource Include="Forms\StartMenu.resx">
       <DependentUpon>StartMenu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Students.resx">
+      <DependentUpon>Students.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -166,6 +202,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -189,6 +226,39 @@
       <Project>{fa17f421-8097-4ff2-92c1-ad34b7b23a00}</Project>
       <Name>Internship-7-Library.Domain</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\positive-L015-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kisspng-computer-icons-reading-person-reading-5abda5268de0e5.9652899415223780225811.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\253-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\253-5121.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\166088.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\book_0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kissclipart-book-clipart-book-computer-icons-reading-1eb6afe82712eba4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kisspng-computer-icons-student-icon-design-college-vector-students-5ada8750ea74e8.2522987515242709289603.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\13-130626_mortar-board-svg-png-icon-free-download-424777-onlinewebfonts-transparent-background-education.png.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\primary_school_male__657887.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
