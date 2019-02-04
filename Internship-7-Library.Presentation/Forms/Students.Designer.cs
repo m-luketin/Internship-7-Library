@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.BookBox = new System.Windows.Forms.ListBox();
+            this.InfoBox = new System.Windows.Forms.ListBox();
             this.DeleteButton = new System.Windows.Forms.Button();
             this.AddButton = new System.Windows.Forms.Button();
             this.EditButton = new System.Windows.Forms.Button();
@@ -37,16 +37,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // BookBox
+            // InfoBox
             // 
-            this.BookBox.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.BookBox.ForeColor = System.Drawing.SystemColors.Control;
-            this.BookBox.FormattingEnabled = true;
-            this.BookBox.ItemHeight = 16;
-            this.BookBox.Location = new System.Drawing.Point(557, -2);
-            this.BookBox.Name = "BookBox";
-            this.BookBox.Size = new System.Drawing.Size(158, 404);
-            this.BookBox.TabIndex = 14;
+            this.InfoBox.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.InfoBox.ForeColor = System.Drawing.SystemColors.Control;
+            this.InfoBox.FormattingEnabled = true;
+            this.InfoBox.ItemHeight = 16;
+            this.InfoBox.Location = new System.Drawing.Point(557, 14);
+            this.InfoBox.Name = "InfoBox";
+            this.InfoBox.Size = new System.Drawing.Size(169, 388);
+            this.InfoBox.TabIndex = 14;
             // 
             // DeleteButton
             // 
@@ -94,12 +94,13 @@
             this.StudentsListBox.Size = new System.Drawing.Size(165, 395);
             this.StudentsListBox.TabIndex = 10;
             this.StudentsListBox.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.StudentsListBox_ItemCheck);
+            this.StudentsListBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.StudentsListBox_MouseMove);
             // 
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImage = global::Internship_7_Library.Properties.Resources.primary_school_male__657887;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(246, 59);
+            this.pictureBox1.Location = new System.Drawing.Point(248, 53);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(246, 248);
             this.pictureBox1.TabIndex = 15;
@@ -110,9 +111,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.ClientSize = new System.Drawing.Size(723, 408);
+            this.ClientSize = new System.Drawing.Size(738, 408);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.BookBox);
+            this.Controls.Add(this.InfoBox);
             this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.AddButton);
             this.Controls.Add(this.EditButton);
@@ -126,7 +127,7 @@
 
         #endregion
 
-        private System.Windows.Forms.ListBox BookBox;
+        private System.Windows.Forms.ListBox InfoBox;
         private System.Windows.Forms.Button DeleteButton;
         private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.Button EditButton;

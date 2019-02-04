@@ -40,12 +40,22 @@ namespace Internship_7_Library.Forms
             }
         }
 
-        private void LoadBooks()
+        private void LoadInfo()
         {
-            BookBox.Items.Clear();
+            InfoBox.Items.Clear();
             if (StudentsListBox.CheckedItems.Any())
             {
-               
+                foreach (var student in _students.GetStudentsList())
+                {
+                    if (student.ToString() == StudentsListBox.CheckedItems[0].ToString())
+                    {
+                        InfoBox.Items.Add($"First name:   {student.FirstName}");
+                        InfoBox.Items.Add($"Last name:   {student.LastName}");
+                        InfoBox.Items.Add($"Birth date:    {student.BirthDate.ToString("dd/MM/yyyy")}");
+                        InfoBox.Items.Add($"Sex:             {student.Sex}");
+                        InfoBox.Items.Add($"Grade:         {student.Grade}");
+                    }
+                }
             }
 
         }
@@ -58,7 +68,7 @@ namespace Internship_7_Library.Forms
                     if (e.Index != index)
                         StudentsListBox.SetItemChecked(index, false);
                 }
-            LoadBooks();
+            LoadInfo();
         }
 
         private void AddButton_Click(object sender, EventArgs e)
@@ -86,6 +96,11 @@ namespace Internship_7_Library.Forms
             var editStudent = new EditStudent(name[0], name[1], _students);
             editStudent.ShowDialog();
             LoadForm();
+        }
+
+        private void StudentsListBox_MouseMove(object sender, MouseEventArgs e)
+        {
+            LoadInfo();
         }
     }
 }
