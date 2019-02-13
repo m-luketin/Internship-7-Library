@@ -11,9 +11,9 @@ namespace Internship_7_Library.Domain.Repositories
 {
     public class BookRepository
     {
-        public BookRepository(LibraryContext context)
+        public BookRepository()
         {
-            _context = context;
+            _context = new LibraryContext();
         }
 
         private readonly LibraryContext _context;

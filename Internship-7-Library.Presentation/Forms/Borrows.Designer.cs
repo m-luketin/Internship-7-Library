@@ -56,6 +56,7 @@
             this.ReturnBookButton.TabIndex = 1;
             this.ReturnBookButton.Text = "Return book";
             this.ReturnBookButton.UseVisualStyleBackColor = false;
+            this.ReturnBookButton.Click += new System.EventHandler(this.ReturnBookButton_Click);
             // 
             // pictureBox1
             // 

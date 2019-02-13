@@ -1,24 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Internship_7_Library.Domain.Repositories;
-using Internship_7_Library.Data.Entities.Models;
 
 namespace Internship_7_Library.Forms
 {
     public partial class EditPublisher : Form
     {
-        public EditPublisher(string publisherName, PublisherRepository publisherRepo)
+        public EditPublisher(string publisherName)
         {
             InitializeComponent();
             _publisherName = publisherName;
-            _publishers = publisherRepo;
+            _publishers = new PublisherRepository();
             PublisherNameBox.Text = publisherName;
         }
 

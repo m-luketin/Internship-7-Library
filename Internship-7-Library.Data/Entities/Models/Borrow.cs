@@ -4,11 +4,27 @@ namespace Internship_7_Library.Data.Entities.Models
 {
     public class Borrow
     {
-        public Borrow( DateTime borrowDate, DateTime? returnDate)
+        public Borrow(Student student, Book book, DateTime borrowDate)
         {
+            StudentId = student.StudentId;
+            Student = student;
+            BookId = book.BookId;
+            Book = book;
             BorrowDate = borrowDate;
-            ReturnDate = returnDate;
         }
+
+        public Borrow(int studentId, int bookId, DateTime borrowDate)
+        {
+            StudentId = studentId;
+            BookId = bookId;
+            BorrowDate = borrowDate;
+        }
+
+        public Borrow()
+        {
+
+        }
+
         public int BorrowId { get; set; }
         public Book Book { get; set; }
         public int BookId { get; set; }

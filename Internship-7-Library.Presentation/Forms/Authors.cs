@@ -9,11 +9,11 @@ namespace Internship_7_Library.Forms
 {
     public partial class Authors : Form
     {
-        public Authors(AuthorRepository authorRepo, BookRepository bookRepo)
+        public Authors()
         {
             InitializeComponent();
-            _authors = authorRepo;
-            _books = bookRepo;
+            _authors = new AuthorRepository();
+            _books = new BookRepository();
             foreach (var author in _authors.GetAuthorList())
             {
                 AuthorsListBox.Items.Add(author);

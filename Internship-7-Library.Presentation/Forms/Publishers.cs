@@ -7,11 +7,11 @@ namespace Internship_7_Library.Forms
 {
     public partial class Publishers : Form
     {
-        public Publishers(PublisherRepository publisherRepo, BookRepository bookRepo)
+        public Publishers()
         {
             InitializeComponent();
-            _publishers = publisherRepo;
-            _books = bookRepo;
+            _publishers = new PublisherRepository();
+            _books = new BookRepository();
             foreach (var publisher in _publishers.GetPublisherList())
             {
                 PublishersListBox.Items.Add(publisher.ToString());
@@ -40,8 +40,7 @@ namespace Internship_7_Library.Forms
                     if (book.Publisher.ToString() == PublishersListBox.CheckedItems[0].ToString())
                         BookBox.Items.Add(book);
                 }
-            }
-            
+            }    
         }
         private void PublishersListBox_ItemCheck(object sender, ItemCheckEventArgs e)
         {
@@ -56,7 +55,7 @@ namespace Internship_7_Library.Forms
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            var addPublisher = new AddPublisher(_publishers);
+            var addPublisher = new AddPublisher();
             addPublisher.ShowDialog();
             LoadForm();
         }
@@ -75,11 +74,10 @@ namespace Internship_7_Library.Forms
         {
             if (PublishersListBox.CheckedItems.Any())
             {
-                var editForm = new EditPublisher(PublishersListBox.CheckedItems[0].ToString(), _publishers);
+                var editForm = new EditPublisher(PublishersListBox.CheckedItems[0].ToString());
                 editForm.ShowDialog();
                 LoadForm();
             }
-            
         }
 
         private void PublishersListBox_SelectedIndexChanged(object sender, EventArgs e)

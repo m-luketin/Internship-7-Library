@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Internship_7_Library.Data.Entities;
 using Internship_7_Library.Data.Entities.Models;
 
@@ -10,30 +8,33 @@ namespace Internship_7_Library.Domain.Repositories
 {
     public class BorrowRepository
     {
-        public BorrowRepository(LibraryContext context)
+        public BorrowRepository()
         {
-            _context = context;
+            _context = new LibraryContext();
         }
 
         private readonly LibraryContext _context;
 
-        public void CreateBorrow(Borrow borrowToAdd)
+        public void CreateBorrow(Student borrowingStudent, Book borrowedBook, DateTime dateOfBorrow)
         {
-            _context.Borrows.Add(borrowToAdd);
+            _context.Borrows.Add(new Borrow(borrowingStudent.StudentId, borrowedBook.BookId, dateOfBorrow));
             _context.SaveChanges();
         }
 
-        public Borrow ReadBorrow(int idToFind)
+        public bool ReturnBorrow(int studentId, int bookId, DateTime returnDate)
         {
-            return _context.Borrows.Find(idToFind);
-        }
+            var flag = false;
+            foreach (var borrow in _context.Borrows)
+            {
+                if (borrow.BookId == bookId && studentId == borrow.StudentId)
+                {
+                    borrow.ReturnDate = returnDate;
+                    flag = true;
+                }
+            }
 
-        public bool UpdateBorrow(int idOldBorrow, Borrow newBorrow)
-        {
-            var flag = DeleteBorrow(idOldBorrow);
-
-            if(flag)
-                CreateBorrow(newBorrow);
+            if (flag)
+                _context.SaveChanges();
 
             return flag;
         }
@@ -46,6 +47,11 @@ namespace Internship_7_Library.Domain.Repositories
             _context.Borrows.Remove(_context.Borrows.Find(idToDelete));
             _context.SaveChanges();
             return true;
+        }
+
+        public List<Borrow> GetBorrowsList()
+        {
+            return _context.Borrows.Select(s => new Borrow(s.Student, s.Book, s.BorrowDate)).ToList();
         }
     }
 }

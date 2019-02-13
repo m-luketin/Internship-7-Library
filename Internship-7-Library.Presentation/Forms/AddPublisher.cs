@@ -1,29 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Internship_7_Library.Data.Entities.Models;
 using Internship_7_Library.Domain.Repositories;
 
 namespace Internship_7_Library.Forms
 {
     public partial class AddPublisher : Form
     {
-        public AddPublisher(PublisherRepository publisherRepo)
+        public AddPublisher()
         {
             InitializeComponent();
-            publishers = publisherRepo;
+            _publishers = new PublisherRepository();
         }
 
-        private PublisherRepository publishers;
+        private readonly PublisherRepository _publishers;
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            var flag = publishers.CreatePublisher(PublisherNameBox.Text);
+            var flag = _publishers.CreatePublisher(PublisherNameBox.Text);
 
             if (flag)
                 Close();

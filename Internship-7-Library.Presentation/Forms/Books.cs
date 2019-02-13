@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Internship_7_Library.Domain.Repositories;
 using Microsoft.EntityFrameworkCore.Internal;
@@ -14,13 +7,13 @@ namespace Internship_7_Library.Forms
 {
     public partial class Books : Form
     {
-        public Books(BookRepository bookRepo, AuthorRepository authorRepo, PublisherRepository publisherRepo, BorrowRepository borrowRepo)
+        public Books()
         {
             InitializeComponent();
-            _books = bookRepo;
-            _authors = authorRepo;
-            _publishers = publisherRepo;
-            _borrows = borrowRepo;
+            _books = new BookRepository();
+            _authors = new AuthorRepository();
+            _publishers = new PublisherRepository();
+            _borrows = new BorrowRepository();
             foreach (var book in _books.GetBooksList())
             {
                 BooksListBox.Items.Add(book.ToString());

@@ -12,9 +12,9 @@ namespace Internship_7_Library.Domain.Repositories
 {
     public class StudentRepository
     {
-        public StudentRepository(LibraryContext context)
+        public StudentRepository()
         {
-            _context = context;
+            _context = new LibraryContext();
         }
 
         private readonly LibraryContext _context;

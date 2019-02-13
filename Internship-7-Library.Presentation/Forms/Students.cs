@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Internship_7_Library.Domain.Repositories;
 using Microsoft.EntityFrameworkCore.Internal;
@@ -14,12 +7,11 @@ namespace Internship_7_Library.Forms
 {
     public partial class Students : Form
     {
-        public Students(StudentRepository studentRepo, BookRepository bookRepo, BorrowRepository borrowRepo)
+        public Students()
         {
             InitializeComponent();
-            _students = studentRepo;
-            _borrows = borrowRepo;
-            _books = bookRepo;
+            _students = new StudentRepository();
+            _borrows = new BorrowRepository();
 
             foreach (var student in _students.GetStudentsList())
             {
@@ -29,7 +21,6 @@ namespace Internship_7_Library.Forms
 
         private readonly StudentRepository _students;
         private readonly BorrowRepository _borrows;
-        private readonly BookRepository _books;
 
         private void LoadForm()
         {
@@ -56,6 +47,22 @@ namespace Internship_7_Library.Forms
                         InfoBox.Items.Add($"Grade:         {student.Grade}");
                     }
                 }
+
+                InfoBox.Items.Add("");
+                var noneFlag = true;
+                InfoBox.Items.Add("Un-returned books:");
+
+                foreach (var borrow in _borrows.GetBorrowsList())
+                {
+                    
+                    if ($"{borrow.Student.FirstName} {borrow.Student.LastName}" == StudentsListBox.CheckedItems[0].ToString() && borrow.ReturnDate == null)
+                    {
+                        InfoBox.Items.Add(borrow.Book.Name);
+                        noneFlag = false;
+                    }
+                }
+                if(noneFlag)
+                    InfoBox.Items.Add("None");
             }
 
         }

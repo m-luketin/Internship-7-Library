@@ -60,6 +60,12 @@
     <Compile Include="Forms\AddBook.Designer.cs">
       <DependentUpon>AddBook.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\AddBorrow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddBorrow.Designer.cs">
+      <DependentUpon>AddBorrow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\AddPublisher.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +138,12 @@
     <Compile Include="Forms\ErrorMessage.Designer.cs">
       <DependentUpon>ErrorMessage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ReturnBook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ReturnBook.Designer.cs">
+      <DependentUpon>ReturnBook.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\StartMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -151,6 +163,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AddBook.resx">
       <DependentUpon>AddBook.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddBorrow.resx">
+      <DependentUpon>AddBorrow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AddPublisher.resx">
       <DependentUpon>AddPublisher.cs</DependentUpon>
@@ -187,6 +202,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ErrorMessage.resx">
       <DependentUpon>ErrorMessage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ReturnBook.resx">
+      <DependentUpon>ReturnBook.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\StartMenu.resx">
       <DependentUpon>StartMenu.cs</DependentUpon>
