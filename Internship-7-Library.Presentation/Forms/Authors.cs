@@ -87,7 +87,7 @@ namespace Internship_7_Library.Forms
                     var result = MessageBox.Show(@"Are you sure?", @"Confirm delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (result == DialogResult.Yes)
                     {
-                        _books.DeleteBook(AuthorsListBox.CheckedItems[0].ToString());
+                        _authors.DeleteAuthor(AuthorsListBox.CheckedItems[0].ToString());
                         LoadForm();
                         LoadBooks();
                     }

@@ -20,22 +20,27 @@ namespace Internship_7_Library.Forms
             {
                 GradeComboBox.Items.Add(grade);
             }
-            BirthDatePicker.MinDate = new DateTime(2013, 1, 1);
-            BirthDatePicker.MaxDate = new DateTime(2002, 1, 1);
+            BirthDatePicker.MinDate = new DateTime(2002, 1, 1);
+            BirthDatePicker.MaxDate = new DateTime(2013, 1, 1);
         }
 
         private readonly StudentRepository _students;
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            _students.CreateStudent(FirstNameBox.Text, LastNameBox.Text, BirthDatePicker.Value,
-                (Sex) Enum.Parse(typeof(Sex), SexComboBox.Text), (Grade) Enum.Parse(typeof(Grade), GradeComboBox.Text));
-            Close();
+            if (FirstNameBox.Text != "" && LastNameBox.Text != "" && SexComboBox.Text != "" && GradeComboBox.Text != "")
+            {
+                _students.CreateStudent(FirstNameBox.Text, LastNameBox.Text, BirthDatePicker.Value,
+                    (Sex)Enum.Parse(typeof(Sex), SexComboBox.Text), (Grade)Enum.Parse(typeof(Grade), GradeComboBox.Text));
+                Close();
+            }
+            else
+                MessageBox.Show(@"Inputs are empty!", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void FirstNameBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!(char.IsLetter(e.KeyChar) || char.IsControl(e.KeyChar)))
+            if (!(char.IsLetter(e.KeyChar) || char.IsControl(e.KeyChar) || char.IsWhiteSpace(e.KeyChar)))
             {
                 e.Handled = true;
             }
@@ -43,7 +48,7 @@ namespace Internship_7_Library.Forms
 
         private void LastNameBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!(char.IsLetter(e.KeyChar) || char.IsControl(e.KeyChar)))
+            if (!(char.IsLetter(e.KeyChar) || char.IsControl(e.KeyChar) || char.IsWhiteSpace(e.KeyChar)))
             {
                 e.Handled = true;
             }

@@ -15,15 +15,13 @@ namespace Internship_7_Library.Forms
         private readonly PublisherRepository _publishers;
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            var flag = _publishers.CreatePublisher(PublisherNameBox.Text);
-
-            if (flag)
-                Close();
-            else
+            if (PublisherNameBox.Text != "")
             {
-                var errorMessage = new ErrorMessage();
-                errorMessage.Show();
+                _publishers.CreatePublisher(PublisherNameBox.Text);
+                Close();
             }
+            else
+                MessageBox.Show(@"Inputs are empty!", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void PublisherNameBox_KeyPress(object sender, KeyPressEventArgs e)

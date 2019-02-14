@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Internship_7_Library.Domain.Repositories;
 
@@ -23,20 +16,18 @@ namespace Internship_7_Library.Forms
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            var flag = _authors.CreateAuthor(FirstNameBox.Text, LastNameBox.Text);
-
-            if (flag)
-                Close();
-            else
+            if (FirstNameBox.Text != "" && LastNameBox.Text != "")
             {
-                var errorMessage = new ErrorMessage();
-                errorMessage.Show();
+                _authors.CreateAuthor(FirstNameBox.Text, LastNameBox.Text);
+                Close();
             }
+            else
+                MessageBox.Show(@"Inputs are empty!", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void FirstNameBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!(char.IsLetter(e.KeyChar) || char.IsControl(e.KeyChar)))
+            if (!(char.IsLetter(e.KeyChar) || char.IsControl(e.KeyChar) || char.IsWhiteSpace(e.KeyChar)))
             {
                 e.Handled = true;
             }
@@ -44,7 +35,7 @@ namespace Internship_7_Library.Forms
 
         private void LastNameBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!(char.IsLetter(e.KeyChar) || char.IsControl(e.KeyChar)))
+            if (!(char.IsLetter(e.KeyChar) || char.IsControl(e.KeyChar) || char.IsWhiteSpace(e.KeyChar)))
             {
                 e.Handled = true;
             }

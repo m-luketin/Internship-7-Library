@@ -132,12 +132,6 @@
     <Compile Include="Forms\Publishers.Designer.cs">
       <DependentUpon>Publishers.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ErrorMessage.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\ErrorMessage.Designer.cs">
-      <DependentUpon>ErrorMessage.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\ReturnBook.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -199,9 +193,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Publishers.resx">
       <DependentUpon>Publishers.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ErrorMessage.resx">
-      <DependentUpon>ErrorMessage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ReturnBook.resx">
       <DependentUpon>ReturnBook.cs</DependentUpon>

@@ -43,7 +43,7 @@ namespace Internship_7_Library.Forms
                     {
                         InfoBox.Items.Add($"First name:   {student.FirstName}");
                         InfoBox.Items.Add($"Last name:   {student.LastName}");
-                        InfoBox.Items.Add($"Birth date:    {student.BirthDate.ToString("dd/MM/yyyy")}");
+                        InfoBox.Items.Add($"Birth date:    {student.BirthDate:dd/MM/yyyy}");
                         InfoBox.Items.Add($"Sex:             {student.Sex}");
                         InfoBox.Items.Add($"Grade:         {student.Grade}");
                     }
@@ -118,6 +118,12 @@ namespace Internship_7_Library.Forms
                     var result = MessageBox.Show(@"Are you sure?", @"Confirm delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (result == DialogResult.Yes)
                     {
+                        foreach (var borrow in _borrows.GetBorrowsList())
+                        {
+                            if (_students.ReadStudent(StudentsListBox.CheckedItems[0].ToString()).StudentId ==
+                                borrow.StudentId)
+                                _borrows.DeleteBorrow(borrow.BorrowId);
+                        }
                         _students.DeleteStudent(StudentsListBox.CheckedItems[0].ToString());
                         LoadForm();
                         LoadInfo();
@@ -128,11 +134,15 @@ namespace Internship_7_Library.Forms
 
         private void EditButton_Click(object sender, EventArgs e)
         {
-            var name = _students.ParseStudent(StudentsListBox.CheckedItems[0].ToString());
+            if (StudentsListBox.CheckedItems.Any())
+            {
+                var name = _students.ParseStudent(StudentsListBox.CheckedItems[0].ToString());
+
+                var editStudent = new EditStudent(name[0], name[1], _students);
+                editStudent.ShowDialog();
+                LoadForm();
+            }
             
-            var editStudent = new EditStudent(name[0], name[1], _students);
-            editStudent.ShowDialog();
-            LoadForm();
         }
 
         private void StudentsListBox_MouseMove(object sender, MouseEventArgs e)

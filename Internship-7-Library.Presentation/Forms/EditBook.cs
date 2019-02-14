@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
-using Internship_7_Library.Data.Entities.Models;
 using Internship_7_Library.Data.Enums;
 using Internship_7_Library.Domain.Repositories;
 
@@ -15,16 +15,16 @@ namespace Internship_7_Library.Forms
             _authors = authorRepo;
             _publishers = publisherRepo;
             _oldName = bookName;
-            foreach (var author in _authors.GetAuthorList())
+            foreach (var author in _authors.GetAuthorList().OrderBy(author => author.LastName))
                 AuthorComboBox.Items.Add(author);
 
-            foreach (var publisher in _publishers.GetPublisherList())
+            foreach (var publisher in _publishers.GetPublisherList().OrderBy(publisher => publisher.Name))
                 PublisherComboBox.Items.Add(publisher);
 
             foreach (var genre in Enum.GetValues(typeof(Genre)))
                 GenreComboBox.Items.Add(genre);
 
-            foreach (var book in _books.GetBooksList())
+            foreach (var book in _books.GetBooksList().OrderBy(book => book.Name))
             {
                 if (book.Name == bookName)
                 {
@@ -45,13 +45,22 @@ namespace Internship_7_Library.Forms
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            _books.UpdateBook(_oldName, NameBox.Text, _authors.ReadAuthor(AuthorComboBox.Text), _publishers.ReadPublisher(PublisherComboBox.Text), int.Parse(PagesBox.Text), int.Parse(NumberOfBooksBox.Text), (Genre)Enum.Parse(typeof(Genre), GenreComboBox.Text));
-            Close();
+            
+            if (NameBox.Text != "" && AuthorComboBox.Text != "" && PublisherComboBox.Text != "" &&
+                PagesBox.Text != "" && NumberOfBooksBox.Text != "" && GenreComboBox.Text != "")
+            {
+                _books.UpdateBook(_oldName, NameBox.Text, _authors.ReadAuthor(AuthorComboBox.Text),
+                    _publishers.ReadPublisher(PublisherComboBox.Text), int.Parse(PagesBox.Text),
+                    int.Parse(NumberOfBooksBox.Text), (Genre)Enum.Parse(typeof(Genre), GenreComboBox.Text));
+                Close();
+            }
+            else
+                MessageBox.Show(@"Inputs are empty!", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void NameBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!(char.IsLetter(e.KeyChar) || char.IsControl(e.KeyChar)))
+            if (!(char.IsLetter(e.KeyChar) || char.IsControl(e.KeyChar) || char.IsWhiteSpace(e.KeyChar) || char.IsDigit(e.KeyChar)))
             {
                 e.Handled = true;
             }

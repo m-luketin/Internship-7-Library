@@ -19,13 +19,19 @@ namespace Internship_7_Library.Forms
        
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            _publishers.UpdatePublisher(_publisherName, PublisherNameBox.Text);
-            Close();
+            
+            if (PublisherNameBox.Text != "")
+            {
+                _publishers.UpdatePublisher(_publisherName, PublisherNameBox.Text);
+                Close();
+            }
+            else
+                MessageBox.Show(@"Inputs are empty!", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void PublisherNameBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!(char.IsLetter(e.KeyChar) || char.IsControl(e.KeyChar)))
+            if (!(char.IsLetter(e.KeyChar) || char.IsControl(e.KeyChar) || char.IsWhiteSpace(e.KeyChar)))
             {
                 e.Handled = true;
             }

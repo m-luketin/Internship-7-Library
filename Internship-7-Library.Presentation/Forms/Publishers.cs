@@ -39,7 +39,7 @@ namespace Internship_7_Library.Forms
 
             if (PublishersListBox.CheckedItems.Any())
             {
-                foreach (var book in _books.GetBooksList())
+                foreach (var book in _books.GetBooksList().OrderBy(book => book.Name))
                 {
                     if (book.Publisher.Name == PublishersListBox.CheckedItems[0].ToString())
                     {
@@ -87,7 +87,7 @@ namespace Internship_7_Library.Forms
                     var result = MessageBox.Show(@"Are you sure?", @"Confirm delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (result == DialogResult.Yes)
                     {
-                        _books.DeleteBook(PublishersListBox.CheckedItems[0].ToString());
+                        _publishers.DeletePublisher(PublishersListBox.CheckedItems[0].ToString());
                         LoadForm();
                         LoadBooks();
                     }

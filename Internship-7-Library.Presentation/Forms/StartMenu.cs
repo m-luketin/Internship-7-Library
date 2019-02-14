@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using Internship_7_Library.Domain.Repositories;
 
 namespace Internship_7_Library.Forms
 {

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
 using Internship_7_Library.Domain.Repositories;
 
@@ -12,7 +13,7 @@ namespace Internship_7_Library.Forms
             _books = new BookRepository();
             _students = new StudentRepository();
             _borrows = new BorrowRepository();
-            foreach (var student in _students.GetStudentsList())
+            foreach (var student in _students.GetStudentsList().OrderBy(student => student.LastName))
             {
                 StudentComboBox.Items.Add(student);
             }
@@ -35,10 +36,14 @@ namespace Internship_7_Library.Forms
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            _borrows.ReturnBorrow(_students.ReadStudent(StudentComboBox.Text).StudentId,
-                                  _books.ReadBook(BookComboBox.Text).BookId,
-                                   ReturnDatePicker.Value);
-            Close();
+            if (StudentComboBox.Text != "" && BookComboBox.Text != "")
+            {
+                _borrows.ReturnBorrow(_students.ReadStudent(StudentComboBox.Text).StudentId,
+                    _books.ReadBook(BookComboBox.Text).BookId, ReturnDatePicker.Value);
+                Close();
+            }
+            else
+                MessageBox.Show(@"Inputs are empty!", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void StudentComboBox_DropDownClosed(object sender, EventArgs e)
