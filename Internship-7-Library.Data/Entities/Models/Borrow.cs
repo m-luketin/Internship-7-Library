@@ -4,13 +4,14 @@ namespace Internship_7_Library.Data.Entities.Models
 {
     public class Borrow
     {
-        public Borrow(Student student, Book book, DateTime borrowDate)
+        public Borrow(Student student, Book book, DateTime borrowDate, DateTime? returnDate)
         {
             StudentId = student.StudentId;
             Student = student;
             BookId = book.BookId;
             Book = book;
             BorrowDate = borrowDate;
+            ReturnDate = returnDate;
         }
 
         public Borrow(int studentId, int bookId, DateTime borrowDate)

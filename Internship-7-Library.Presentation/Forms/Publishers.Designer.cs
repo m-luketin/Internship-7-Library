@@ -33,6 +33,8 @@
             this.AddButton = new System.Windows.Forms.Button();
             this.DeleteButton = new System.Windows.Forms.Button();
             this.BookBox = new System.Windows.Forms.ListBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // PublishersListBox
@@ -95,12 +97,23 @@
             this.BookBox.Size = new System.Drawing.Size(158, 308);
             this.BookBox.TabIndex = 4;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Internship_7_Library.Properties.Resources.accept_noun_140275;
+            this.pictureBox1.Location = new System.Drawing.Point(183, 28);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(220, 277);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
+            // 
             // Publishers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(572, 416);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.BookBox);
             this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.AddButton);
@@ -108,6 +121,7 @@
             this.Controls.Add(this.PublishersListBox);
             this.Name = "Publishers";
             this.Text = "EditPublishers";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -119,5 +133,6 @@
         private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.Button DeleteButton;
         private System.Windows.Forms.ListBox BookBox;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

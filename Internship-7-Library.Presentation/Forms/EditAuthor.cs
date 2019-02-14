@@ -32,5 +32,21 @@ namespace Internship_7_Library.Forms
             _authors.UpdateAuthor($"{_firstName} {_lastName}", $"{FirstNameBox.Text} {LastNameBox.Text}");
             Close();
         }
+
+        private void FirstNameBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsLetter(e.KeyChar) || char.IsControl(e.KeyChar)))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void LastNameBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsLetter(e.KeyChar) || char.IsControl(e.KeyChar)))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

@@ -45,7 +45,7 @@
             this.InfoBox.ItemHeight = 16;
             this.InfoBox.Location = new System.Drawing.Point(183, 12);
             this.InfoBox.Name = "InfoBox";
-            this.InfoBox.Size = new System.Drawing.Size(239, 276);
+            this.InfoBox.Size = new System.Drawing.Size(286, 276);
             this.InfoBox.TabIndex = 14;
             // 
             // DeleteButton
@@ -100,9 +100,9 @@
             // 
             this.pictureBox1.BackgroundImage = global::Internship_7_Library.Properties.Resources.book_0;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(428, 61);
+            this.pictureBox1.Location = new System.Drawing.Point(475, 97);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(220, 227);
+            this.pictureBox1.Size = new System.Drawing.Size(173, 191);
             this.pictureBox1.TabIndex = 15;
             this.pictureBox1.TabStop = false;
             // 

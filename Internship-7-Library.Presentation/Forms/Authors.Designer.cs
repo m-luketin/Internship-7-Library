@@ -33,6 +33,8 @@
             this.AddButton = new System.Windows.Forms.Button();
             this.EditButton = new System.Windows.Forms.Button();
             this.AuthorsListBox = new System.Windows.Forms.CheckedListBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // BookBox
@@ -94,12 +96,24 @@
             this.AuthorsListBox.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.AuthorsListBox_ItemCheck);
             this.AuthorsListBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.AuthorsListBox_MouseMove);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Image = global::Internship_7_Library.Properties.Resources._693752_paper_512x512;
+            this.pictureBox1.Location = new System.Drawing.Point(226, 33);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(264, 228);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 10;
+            this.pictureBox1.TabStop = false;
+            // 
             // Authors
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(706, 379);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.BookBox);
             this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.AddButton);
@@ -107,6 +121,7 @@
             this.Controls.Add(this.AuthorsListBox);
             this.Name = "Authors";
             this.Text = "EditAuthor";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -118,5 +133,6 @@
         private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.Button EditButton;
         private System.Windows.Forms.CheckedListBox AuthorsListBox;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

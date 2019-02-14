@@ -278,5 +278,20 @@
   <ItemGroup>
     <None Include="Resources\primary_school_male__657887.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\6b6500d1-7c75-4d59-8a3c-b4da69a7ee16_rwc_0x0x2000x2000x2000.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\6b6500d1-7c75-4d59-8a3c-b4da69a7ee16_rwc_0x0x2000x2000x20001.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\693752_paper_512x512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\33-337568_microsoft-publisher-icon-microsoft-powerpoint-icon-png.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\accept-noun-140275.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

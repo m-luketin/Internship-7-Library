@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using Internship_7_Library.Domain.Repositories;
@@ -14,7 +13,7 @@ namespace Internship_7_Library.Forms
             InitializeComponent();
             _authors = new AuthorRepository();
             _books = new BookRepository();
-            foreach (var author in _authors.GetAuthorList())
+            foreach (var author in _authors.GetAuthorList().OrderBy(author => author.LastName))
             {
                 AuthorsListBox.Items.Add(author);
             }
@@ -26,7 +25,7 @@ namespace Internship_7_Library.Forms
         private void LoadForm()
         {
             AuthorsListBox.Items.Clear();
-            foreach (var author in _authors.GetAuthorList())
+            foreach (var author in _authors.GetAuthorList().OrderBy(author => author.LastName))
             {
                 AuthorsListBox.Items.Add(author);
             }
@@ -34,15 +33,21 @@ namespace Internship_7_Library.Forms
         private void LoadBooks()
         {
             BookBox.Items.Clear();
+            BookBox.Items.Add("Books released");
+            BookBox.Items.Add("");
+
             if (AuthorsListBox.CheckedItems.Any())
             {
                 foreach (var book in _books.GetBooksList())
                 {
                     if (book.Author.ToString() == AuthorsListBox.CheckedItems[0].ToString())
-                        BookBox.Items.Add(book);
+                    {
+                        BookBox.Items.Add($" {book}");
+                        BookBox.Items.Add($" {book.Publisher.Name}");
+                        BookBox.Items.Add("");
+                    } 
                 }
             }
-
         }
         private void AddButton_Click(object sender, EventArgs e)
         {
@@ -66,13 +71,28 @@ namespace Internship_7_Library.Forms
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
+           
             if (AuthorsListBox.CheckedItems.Any())
             {
-                var name = _authors.ParseAuthor(AuthorsListBox.CheckedItems[0].ToString());
-                _authors.DeleteAuthor($"{name[0]} {name[1]}");
-            }
+                var flag = true;
+                foreach (var book in _books.GetBooksList())
+                    if (AuthorsListBox.CheckedItems[0].ToString() == $"{book.Author.FirstName} {book.Author.LastName}")
+                        flag = false;
 
-            LoadForm();
+                if (!flag)
+                    MessageBox.Show(@"Author is assigned to a book!", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                else
+                {
+                    var result = MessageBox.Show(@"Are you sure?", @"Confirm delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (result == DialogResult.Yes)
+                    {
+                        _books.DeleteBook(AuthorsListBox.CheckedItems[0].ToString());
+                        LoadForm();
+                        LoadBooks();
+                    }
+                }
+            }
         }
 
         private void EditButton_Click(object sender, EventArgs e)

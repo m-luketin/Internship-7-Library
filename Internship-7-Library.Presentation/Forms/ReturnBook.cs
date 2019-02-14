@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Internship_7_Library.Domain.Repositories;
 
@@ -23,6 +16,9 @@ namespace Internship_7_Library.Forms
             {
                 StudentComboBox.Items.Add(student);
             }
+
+            ReturnDatePicker.MinDate = new DateTime(2018, 1, 1);
+            ReturnDatePicker.MaxDate = new DateTime(2020, 1, 1);
         }
 
         private readonly BookRepository _books;
@@ -33,7 +29,7 @@ namespace Internship_7_Library.Forms
         {
             BookComboBox.Items.Clear();
                 foreach (var borrow in _borrows.GetBorrowsList())
-                    if (_students.ReadStudent(StudentComboBox.Text).StudentId == borrow.StudentId && borrow.ReturnDate == null)
+                    if (_students.ReadStudent(StudentComboBox.Text).StudentId == borrow.StudentId && !borrow.ReturnDate.HasValue)
                         BookComboBox.Items.Add(borrow.Book.Name);
         }
 

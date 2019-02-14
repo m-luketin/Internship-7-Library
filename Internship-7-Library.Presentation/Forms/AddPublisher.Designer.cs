@@ -35,10 +35,11 @@
             // 
             // PublisherNameBox
             // 
-            this.PublisherNameBox.Location = new System.Drawing.Point(92, 30);
+            this.PublisherNameBox.Location = new System.Drawing.Point(92, 33);
             this.PublisherNameBox.Name = "PublisherNameBox";
             this.PublisherNameBox.Size = new System.Drawing.Size(171, 22);
             this.PublisherNameBox.TabIndex = 0;
+            this.PublisherNameBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PublisherNameBox_KeyPress);
             // 
             // label1
             // 

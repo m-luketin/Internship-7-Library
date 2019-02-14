@@ -35,6 +35,9 @@ namespace Internship_7_Library.Forms
             BirthDatePicker.Value = oldStudent.BirthDate;
             SexComboBox.Text = oldStudent.Sex.ToString();
             GradeComboBox.Text = oldStudent.Grade.ToString();
+
+            BirthDatePicker.MinDate = new DateTime(2019, 1, 1);
+            BirthDatePicker.MaxDate = new DateTime(2020, 1, 1);
         }
 
         private readonly StudentRepository _students;
@@ -48,6 +51,22 @@ namespace Internship_7_Library.Forms
                 SexComboBox.Text), (Grade) Enum.Parse(typeof(Grade), GradeComboBox.Text)));
 
             Close();
+        }
+
+        private void FirstNameBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsLetter(e.KeyChar) || char.IsControl(e.KeyChar)))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void LastNameBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsLetter(e.KeyChar) || char.IsControl(e.KeyChar)))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

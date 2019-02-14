@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
 using Internship_7_Library.Domain.Repositories;
 using Microsoft.EntityFrameworkCore.Internal;
@@ -14,7 +15,8 @@ namespace Internship_7_Library.Forms
             _authors = new AuthorRepository();
             _publishers = new PublisherRepository();
             _borrows = new BorrowRepository();
-            foreach (var book in _books.GetBooksList())
+            _students = new StudentRepository();
+            foreach (var book in _books.GetBooksList().OrderBy(book => book.Name))
             {
                 BooksListBox.Items.Add(book.ToString());
             }
@@ -24,11 +26,11 @@ namespace Internship_7_Library.Forms
         private readonly AuthorRepository _authors;
         private readonly PublisherRepository _publishers;
         private readonly BorrowRepository _borrows;
-
+        private readonly StudentRepository _students;
         private void LoadForm()
         {
             BooksListBox.Items.Clear();
-            foreach (var book in _books.GetBooksList())
+            foreach (var book in _books.GetBooksList().OrderBy(book => book.Name))
             {
                 BooksListBox.Items.Add(book.ToString());
             }
@@ -39,6 +41,11 @@ namespace Internship_7_Library.Forms
             InfoBox.Items.Clear();
             if (BooksListBox.CheckedItems.Any())
             {
+                var rented = 0;
+                foreach (var borrow in _borrows.GetBorrowsList())
+                    if (_books.ReadBook(BooksListBox.CheckedItems[0].ToString()).BookId == borrow.BookId && borrow.ReturnDate == null)
+                        rented++;
+
                 foreach (var book in _books.GetBooksList())
                 {
                     if (book.Name == BooksListBox.CheckedItems[0].ToString())
@@ -48,8 +55,15 @@ namespace Internship_7_Library.Forms
                         InfoBox.Items.Add($"Number of pages:  {book.NumberOfPages.ToString()}");
                         InfoBox.Items.Add($"Number of copies: {book.NumberOfBooks.ToString()}");
                         InfoBox.Items.Add($"Genre:                   {book.Genre.ToString()}");
+                        InfoBox.Items.Add("");
+                        InfoBox.Items.Add($"Currently available:      {book.NumberOfBooks - rented}");
+                        InfoBox.Items.Add($"Currently rented by:      {rented}");
+                        
                     }   
                 }
+                foreach(var borrow in _borrows.GetBorrowsList())
+                    if (_books.ReadBook(BooksListBox.CheckedItems[0].ToString()).BookId == borrow.BookId && borrow.ReturnDate == null)
+                        InfoBox.Items.Add($"{_students.ReadStudentById(borrow.StudentId)}");
             }
         }
         private void AddButton_Click(object sender, EventArgs e)
@@ -63,11 +77,24 @@ namespace Internship_7_Library.Forms
         {
             if (BooksListBox.CheckedItems.Any())
             {
-                _books.DeleteBook(BooksListBox.CheckedItems[0].ToString());
-            }
+                var flag = true;
+                foreach (var borrow in _borrows.GetBorrowsList())
+                    if (_books.ReadBook(BooksListBox.CheckedItems[0].ToString()).BookId == borrow.BookId && borrow.ReturnDate == null)
+                        flag = false;
+                if (!flag)
+                    MessageBox.Show(@"Cant delete currently borrowed book!", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-            LoadForm();
-            LoadInfo();
+                else
+                {
+                    var result = MessageBox.Show(@"Are you sure?", @"Confirm delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (result == DialogResult.Yes)
+                    {
+                        _books.DeleteBook(BooksListBox.CheckedItems[0].ToString());
+                        LoadForm();
+                        LoadInfo();
+                    }
+                } 
+            }
         }
 
         private void EditButton_Click(object sender, EventArgs e)

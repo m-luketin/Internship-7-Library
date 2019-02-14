@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Internship_7_Library.Domain.Repositories;
 
@@ -24,24 +18,59 @@ namespace Internship_7_Library.Forms
                 StudentComboBox.Items.Add(student);
             }
 
-            foreach (var book in _books.GetBooksList())
-            {
-                BookComboBox.Items.Add(book);
-            }
+            BorrowDatePicker.MinDate = new DateTime(2019, 1, 1);
+            BorrowDatePicker.MaxDate = new DateTime(2020, 1, 1);
         }
 
         private readonly BookRepository _books;
         private readonly StudentRepository _students;
         private readonly BorrowRepository _borrows;
 
+        private void LoadBooks()
+        {
+            BookComboBox.Items.Clear();
+
+            foreach (var book in _books.GetBooksList())
+            {
+                BookComboBox.Items.Add(book.Name);
+            }
+            foreach (var borrow in _borrows.GetBorrowsList())
+                if (_students.ReadStudent(StudentComboBox.Text).StudentId == borrow.StudentId && borrow.ReturnDate == null)
+                    BookComboBox.Items.Remove(borrow.Book.Name);
+        }
         private void SaveButton_Click(object sender, EventArgs e)
         {
             var borrowingStudent = _students.ReadStudent(StudentComboBox.Text);
             var borrowedBook = _books.ReadBook(BookComboBox.Text);
             var dateOfBorrow = BorrowDatePicker.Value;
 
-            _borrows.CreateBorrow(borrowingStudent, borrowedBook, dateOfBorrow);
-            Close();
+            var available = borrowedBook.NumberOfBooks;
+            var alreadyRented = 0;
+
+            foreach (var borrow in _borrows.GetBorrowsList().Where(borrow=> borrow.ReturnDate == null))
+            {
+                if (borrow.BookId == borrowedBook.BookId)
+                    available--;
+                if (borrow.StudentId == borrowingStudent.StudentId)
+                    alreadyRented++;
+            }
+
+            if(alreadyRented > 2)
+                MessageBox.Show(@"Student passed book limit!", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else if(available < 1)
+                MessageBox.Show(@"No books available!", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else
+            {
+                _borrows.CreateBorrow(borrowingStudent, borrowedBook, dateOfBorrow);
+                Close();
+            }
+                
+        }
+
+        private void StudentComboBox_DropDownClosed(object sender, EventArgs e)
+        {
+            if(StudentComboBox.Text != "")
+                LoadBooks();
         }
     }
 }

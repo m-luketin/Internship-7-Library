@@ -104,6 +104,56 @@ namespace Internship_7_Library.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _33_337568_microsoft_publisher_icon_microsoft_powerpoint_icon_png {
+            get {
+                object obj = ResourceManager.GetObject("33-337568_microsoft-publisher-icon-microsoft-powerpoint-icon-png", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _693752_paper_512x512 {
+            get {
+                object obj = ResourceManager.GetObject("693752_paper_512x512", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _6b6500d1_7c75_4d59_8a3c_b4da69a7ee16_rwc_0x0x2000x2000x2000 {
+            get {
+                object obj = ResourceManager.GetObject("6b6500d1-7c75-4d59-8a3c-b4da69a7ee16_rwc_0x0x2000x2000x2000", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _6b6500d1_7c75_4d59_8a3c_b4da69a7ee16_rwc_0x0x2000x2000x20001 {
+            get {
+                object obj = ResourceManager.GetObject("6b6500d1-7c75-4d59-8a3c-b4da69a7ee16_rwc_0x0x2000x2000x20001", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap accept_noun_140275 {
+            get {
+                object obj = ResourceManager.GetObject("accept-noun-140275", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap book_0 {
             get {
                 object obj = ResourceManager.GetObject("book_0", resourceCulture);

@@ -118,37 +118,52 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="13-130626_mortar-board-svg-png-icon-free-download-424777-onlinewebfonts-transparent-background-education.png" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\13-130626_mortar-board-svg-png-icon-free-download-424777-onlinewebfonts-transparent-background-education.png.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="6b6500d1-7c75-4d59-8a3c-b4da69a7ee16_rwc_0x0x2000x2000x20001" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\6b6500d1-7c75-4d59-8a3c-b4da69a7ee16_rwc_0x0x2000x2000x20001.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="253-5121" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\253-5121.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="kisspng-computer-icons-reading-person-reading-5abda5268de0e5.9652899415223780225811" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\kisspng-computer-icons-reading-person-reading-5abda5268de0e5.9652899415223780225811.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="images" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\images.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="kisspng-computer-icons-student-icon-design-college-vector-students-5ada8750ea74e8.2522987515242709289603" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\kisspng-computer-icons-student-icon-design-college-vector-students-5ada8750ea74e8.2522987515242709289603.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="book_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\book_0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="6b6500d1-7c75-4d59-8a3c-b4da69a7ee16_rwc_0x0x2000x2000x2000" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\6b6500d1-7c75-4d59-8a3c-b4da69a7ee16_rwc_0x0x2000x2000x2000.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="kissclipart-book-clipart-book-computer-icons-reading-1eb6afe82712eba4" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\kissclipart-book-clipart-book-computer-icons-reading-1eb6afe82712eba4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="253-512" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\253-512.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="kisspng-computer-icons-reading-person-reading-5abda5268de0e5.9652899415223780225811" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\kisspng-computer-icons-reading-person-reading-5abda5268de0e5.9652899415223780225811.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="166088" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\166088.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="book_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\book_0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="positive-L015-512" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\positive-L015-512.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="kisspng-computer-icons-student-icon-design-college-vector-students-5ada8750ea74e8.2522987515242709289603" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\kisspng-computer-icons-student-icon-design-college-vector-students-5ada8750ea74e8.2522987515242709289603.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="166088" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\166088.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="253-5121" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\253-5121.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="primary_school_male__657887" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\primary_school_male__657887.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="13-130626_mortar-board-svg-png-icon-free-download-424777-onlinewebfonts-transparent-background-education.png" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\13-130626_mortar-board-svg-png-icon-free-download-424777-onlinewebfonts-transparent-background-education.png.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="33-337568_microsoft-publisher-icon-microsoft-powerpoint-icon-png" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\33-337568_microsoft-publisher-icon-microsoft-powerpoint-icon-png.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="253-512" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\253-512.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="693752_paper_512x512" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\693752_paper_512x512.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="images" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\images.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="accept-noun-140275" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\accept-noun-140275.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

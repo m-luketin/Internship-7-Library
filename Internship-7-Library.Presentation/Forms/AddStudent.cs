@@ -20,6 +20,8 @@ namespace Internship_7_Library.Forms
             {
                 GradeComboBox.Items.Add(grade);
             }
+            BirthDatePicker.MinDate = new DateTime(2013, 1, 1);
+            BirthDatePicker.MaxDate = new DateTime(2002, 1, 1);
         }
 
         private readonly StudentRepository _students;
@@ -29,6 +31,22 @@ namespace Internship_7_Library.Forms
             _students.CreateStudent(FirstNameBox.Text, LastNameBox.Text, BirthDatePicker.Value,
                 (Sex) Enum.Parse(typeof(Sex), SexComboBox.Text), (Grade) Enum.Parse(typeof(Grade), GradeComboBox.Text));
             Close();
+        }
+
+        private void FirstNameBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsLetter(e.KeyChar) || char.IsControl(e.KeyChar)))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void LastNameBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsLetter(e.KeyChar) || char.IsControl(e.KeyChar)))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

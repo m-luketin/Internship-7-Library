@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Internship_7_Library.Data.Entities;
 using Internship_7_Library.Data.Entities.Models;
 using Internship_7_Library.Data.Enums;
@@ -39,7 +37,7 @@ namespace Internship_7_Library.Domain.Repositories
             return null;
         }
 
-        public bool UpdateBook(string oldName, Book newBook)
+        public bool UpdateBook(string oldName, string newName, Author newAuthor, Publisher newPublisher, int newNumberOfPages, int newNumberOfCopies, Genre newGenre)
         {
             var flag = false;
             
@@ -47,12 +45,12 @@ namespace Internship_7_Library.Domain.Repositories
             {
                 if (oldName == book.Name)
                 {
-                    book.Name = newBook.Name;
-                    book.Author = newBook.Author;
-                    book.Publisher = newBook.Publisher;
-                    book.NumberOfPages = newBook.NumberOfPages;
-                    book.NumberOfBooks = newBook.NumberOfBooks;
-                    book.Genre = newBook.Genre;
+                    book.Name = newName;
+                    book.Author = _context.Authors.Find(newAuthor.AuthorId);
+                    book.Publisher = _context.Publishers.Find(newPublisher.PublisherId);
+                    book.NumberOfPages = newNumberOfPages;
+                    book.NumberOfBooks = newNumberOfCopies;
+                    book.Genre = newGenre;
                     flag = true;
                 }
             }

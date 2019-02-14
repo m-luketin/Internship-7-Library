@@ -26,7 +26,7 @@ namespace Internship_7_Library.Domain.Repositories
             var flag = false;
             foreach (var borrow in _context.Borrows)
             {
-                if (borrow.BookId == bookId && studentId == borrow.StudentId)
+                if (borrow.BookId == bookId && studentId == borrow.StudentId && !borrow.ReturnDate.HasValue)
                 {
                     borrow.ReturnDate = returnDate;
                     flag = true;
@@ -51,7 +51,7 @@ namespace Internship_7_Library.Domain.Repositories
 
         public List<Borrow> GetBorrowsList()
         {
-            return _context.Borrows.Select(s => new Borrow(s.Student, s.Book, s.BorrowDate)).ToList();
+            return _context.Borrows.Select(s => new Borrow(s.Student, s.Book, s.BorrowDate, s.ReturnDate)).ToList();
         }
     }
 }

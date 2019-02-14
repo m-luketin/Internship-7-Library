@@ -53,6 +53,7 @@
             this.FirstNameBox.Name = "FirstNameBox";
             this.FirstNameBox.Size = new System.Drawing.Size(171, 22);
             this.FirstNameBox.TabIndex = 3;
+            this.FirstNameBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FirstNameBox_KeyPress);
             // 
             // LastNameBox
             // 
@@ -60,6 +61,7 @@
             this.LastNameBox.Name = "LastNameBox";
             this.LastNameBox.Size = new System.Drawing.Size(171, 22);
             this.LastNameBox.TabIndex = 6;
+            this.LastNameBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.LastNameBox_KeyPress);
             // 
             // label1
             // 

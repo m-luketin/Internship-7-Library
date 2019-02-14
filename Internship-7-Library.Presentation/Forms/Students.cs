@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
 using Internship_7_Library.Domain.Repositories;
 using Microsoft.EntityFrameworkCore.Internal;
@@ -13,7 +14,7 @@ namespace Internship_7_Library.Forms
             _students = new StudentRepository();
             _borrows = new BorrowRepository();
 
-            foreach (var student in _students.GetStudentsList())
+            foreach (var student in _students.GetStudentsList().OrderBy(student => student.LastName))
             {
                 StudentsListBox.Items.Add(student);
             }
@@ -25,7 +26,7 @@ namespace Internship_7_Library.Forms
         private void LoadForm()
         {
             StudentsListBox.Items.Clear();
-            foreach (var student in _students.GetStudentsList())
+            foreach (var student in _students.GetStudentsList().OrderBy(student => student.LastName))
             {
                 StudentsListBox.Items.Add(student.ToString());
             }
@@ -54,14 +55,29 @@ namespace Internship_7_Library.Forms
 
                 foreach (var borrow in _borrows.GetBorrowsList())
                 {
-                    
+
                     if ($"{borrow.Student.FirstName} {borrow.Student.LastName}" == StudentsListBox.CheckedItems[0].ToString() && borrow.ReturnDate == null)
                     {
                         InfoBox.Items.Add(borrow.Book.Name);
                         noneFlag = false;
                     }
                 }
-                if(noneFlag)
+                if (noneFlag)
+                    InfoBox.Items.Add("None");
+
+                InfoBox.Items.Add("");
+                noneFlag = true;
+                InfoBox.Items.Add("Previously borrowed books:");
+
+                foreach (var borrow in _borrows.GetBorrowsList())
+                {
+                    if ($"{borrow.Student.FirstName} {borrow.Student.LastName}" == StudentsListBox.CheckedItems[0].ToString() && borrow.ReturnDate.HasValue)
+                    {
+                        InfoBox.Items.Add(borrow.Book.Name);
+                        noneFlag = false;
+                    }
+                }
+                if (noneFlag)
                     InfoBox.Items.Add("None");
             }
 
@@ -89,11 +105,25 @@ namespace Internship_7_Library.Forms
         {
             if (StudentsListBox.CheckedItems.Any())
             {
-                var name = _students.ParseStudent(StudentsListBox.CheckedItems[0].ToString());
-                _students.DeleteStudent($"{name[0]} {name[1]}");
-            }
+                var flag = true;
+                foreach (var borrow in _borrows.GetBorrowsList())
+                    if (_students.ReadStudent(StudentsListBox.CheckedItems[0].ToString()).StudentId == borrow.StudentId && borrow.ReturnDate == null)
+                        flag = false;
 
-            LoadForm();
+                if (!flag)
+                    MessageBox.Show(@"Student has un-returned books!", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                else
+                {
+                    var result = MessageBox.Show(@"Are you sure?", @"Confirm delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (result == DialogResult.Yes)
+                    {
+                        _students.DeleteStudent(StudentsListBox.CheckedItems[0].ToString());
+                        LoadForm();
+                        LoadInfo();
+                    }
+                }
+            }
         }
 
         private void EditButton_Click(object sender, EventArgs e)

@@ -45,14 +45,14 @@
             this.InfoBox.ItemHeight = 16;
             this.InfoBox.Location = new System.Drawing.Point(557, 14);
             this.InfoBox.Name = "InfoBox";
-            this.InfoBox.Size = new System.Drawing.Size(169, 388);
+            this.InfoBox.Size = new System.Drawing.Size(180, 388);
             this.InfoBox.TabIndex = 14;
             // 
             // DeleteButton
             // 
             this.DeleteButton.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.DeleteButton.ForeColor = System.Drawing.SystemColors.Control;
-            this.DeleteButton.Location = new System.Drawing.Point(303, 323);
+            this.DeleteButton.Location = new System.Drawing.Point(430, 323);
             this.DeleteButton.Name = "DeleteButton";
             this.DeleteButton.Size = new System.Drawing.Size(121, 79);
             this.DeleteButton.TabIndex = 13;
@@ -76,7 +76,7 @@
             // 
             this.EditButton.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.EditButton.ForeColor = System.Drawing.SystemColors.Control;
-            this.EditButton.Location = new System.Drawing.Point(430, 323);
+            this.EditButton.Location = new System.Drawing.Point(303, 323);
             this.EditButton.Name = "EditButton";
             this.EditButton.Size = new System.Drawing.Size(121, 79);
             this.EditButton.TabIndex = 11;
@@ -100,7 +100,7 @@
             // 
             this.pictureBox1.BackgroundImage = global::Internship_7_Library.Properties.Resources.primary_school_male__657887;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(248, 53);
+            this.pictureBox1.Location = new System.Drawing.Point(249, 43);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(246, 248);
             this.pictureBox1.TabIndex = 15;

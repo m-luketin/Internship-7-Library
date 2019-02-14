@@ -88,6 +88,7 @@
             this.NumberOfBooksBox.Name = "NumberOfBooksBox";
             this.NumberOfBooksBox.Size = new System.Drawing.Size(190, 22);
             this.NumberOfBooksBox.TabIndex = 11;
+            this.NumberOfBooksBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NumberOfBooksBox_KeyPress);
             // 
             // PagesBox
             // 
@@ -95,6 +96,7 @@
             this.PagesBox.Name = "PagesBox";
             this.PagesBox.Size = new System.Drawing.Size(191, 22);
             this.PagesBox.TabIndex = 10;
+            this.PagesBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PagesBox_KeyPress);
             // 
             // NameBox
             // 
@@ -102,6 +104,7 @@
             this.NameBox.Name = "NameBox";
             this.NameBox.Size = new System.Drawing.Size(263, 22);
             this.NameBox.TabIndex = 9;
+            this.NameBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NameBox_KeyPress);
             // 
             // label6
             // 

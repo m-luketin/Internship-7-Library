@@ -35,6 +35,11 @@ namespace Internship_7_Library.Domain.Repositories
             return Enumerable.FirstOrDefault(_context.Students, student => name[0] == student.FirstName && name[1] == student.LastName);
         }
 
+        public Student ReadStudentById(int studentId)
+        {
+            return Enumerable.FirstOrDefault(_context.Students, student => student.StudentId == studentId);
+        }
+
         public bool UpdateStudent(string fullOldName, Student newStudent)
         {
             var flag = false;
