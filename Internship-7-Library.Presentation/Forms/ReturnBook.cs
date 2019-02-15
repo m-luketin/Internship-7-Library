@@ -15,7 +15,11 @@ namespace Internship_7_Library.Forms
             _borrows = new BorrowRepository();
             foreach (var student in _students.GetStudentsList().OrderBy(student => student.LastName))
             {
-                StudentComboBox.Items.Add(student);
+                foreach (var borrow in _borrows.GetBorrowsList())
+                {
+                    if (borrow.StudentId == _students.ReadStudent($"{student.FirstName} {student.LastName}").StudentId && borrow.ReturnDate == null && !(StudentComboBox.Items.Contains(student)))
+                        StudentComboBox.Items.Add(student);
+                }
             }
 
             ReturnDatePicker.MinDate = new DateTime(2018, 1, 1);

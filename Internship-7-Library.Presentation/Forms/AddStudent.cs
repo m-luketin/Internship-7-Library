@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
 using Internship_7_Library.Data.Enums;
 using Internship_7_Library.Domain.Repositories;
@@ -7,10 +8,10 @@ namespace Internship_7_Library.Forms
 {
     public partial class AddStudent : Form
     {
-        public AddStudent(StudentRepository studentRepo)
+        public AddStudent()
         {
             InitializeComponent();
-            _students = studentRepo;
+            _students = new StudentRepository();
             foreach (var sex in Enum.GetValues(typeof(Sex)))
             {
                 SexComboBox.Items.Add(sex);
@@ -28,15 +29,27 @@ namespace Internship_7_Library.Forms
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            if (FirstNameBox.Text != "" && LastNameBox.Text != "" && SexComboBox.Text != "" && GradeComboBox.Text != "")
+            if (_students.GetStudentsList().Any(student =>
+                student.FirstName == FirstNameBox.Text && student.LastName == LastNameBox.Text))
             {
-                _students.CreateStudent(FirstNameBox.Text, LastNameBox.Text, BirthDatePicker.Value,
-                    (Sex)Enum.Parse(typeof(Sex), SexComboBox.Text), (Grade)Enum.Parse(typeof(Grade), GradeComboBox.Text));
-                Close();
+                MessageBox.Show(@"Student already in database!", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
-                MessageBox.Show(@"Inputs are empty!", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            {
+                if (string.IsNullOrWhiteSpace(FirstNameBox.Text) || string.IsNullOrWhiteSpace(LastNameBox.Text) ||
+                    string.IsNullOrWhiteSpace(SexComboBox.Text) || string.IsNullOrWhiteSpace(GradeComboBox.Text))
+                {
+                    MessageBox.Show(@"Inputs are empty!", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    _students.CreateStudent(FirstNameBox.Text, LastNameBox.Text, BirthDatePicker.Value,
+                        (Sex)Enum.Parse(typeof(Sex), SexComboBox.Text), (Grade)Enum.Parse(typeof(Grade), GradeComboBox.Text));
+                    Close();
+                }
+            }
         }
+            
 
         private void FirstNameBox_KeyPress(object sender, KeyPressEventArgs e)
         {

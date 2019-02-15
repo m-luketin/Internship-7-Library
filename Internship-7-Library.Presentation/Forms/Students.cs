@@ -96,7 +96,7 @@ namespace Internship_7_Library.Forms
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            var addStudent = new AddStudent(_students);
+            var addStudent = new AddStudent();
             addStudent.ShowDialog();
             LoadForm();
         }
@@ -138,7 +138,7 @@ namespace Internship_7_Library.Forms
             {
                 var name = _students.ParseStudent(StudentsListBox.CheckedItems[0].ToString());
 
-                var editStudent = new EditStudent(name[0], name[1], _students);
+                var editStudent = new EditStudent(name[0], name[1]);
                 editStudent.ShowDialog();
                 LoadForm();
             }

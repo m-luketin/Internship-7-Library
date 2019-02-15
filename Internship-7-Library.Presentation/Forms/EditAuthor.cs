@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
 using Internship_7_Library.Domain.Repositories;
 
@@ -6,29 +7,39 @@ namespace Internship_7_Library.Forms
 {
     public partial class EditAuthor : Form
     {
-        public EditAuthor(string firstName, string lastName, AuthorRepository authorRepo)
+        public EditAuthor(string firstName, string lastName)
         {
             InitializeComponent();
             FirstNameBox.Text = firstName;
             LastNameBox.Text = lastName;
-            _firstName = firstName;
-            _lastName = lastName;
-            _authors = authorRepo;
+            _oldFirstName = firstName;
+            _oldLastName = lastName;
+            _authors = new AuthorRepository();
         }
 
         private readonly AuthorRepository _authors;
-        private readonly string _firstName;
-        private readonly string _lastName;
+        private readonly string _oldFirstName;
+        private readonly string _oldLastName;
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            if (FirstNameBox.Text != "" && LastNameBox.Text != "")
+            if (_authors.GetAuthorList().Any(author => author.FirstName == FirstNameBox.Text) &&
+                _authors.GetAuthorList().Any(author => author.LastName == LastNameBox.Text))
             {
-                _authors.UpdateAuthor($"{_firstName} {_lastName}", $"{FirstNameBox.Text} {LastNameBox.Text}");
-                Close();
+                MessageBox.Show(@"Author already in database!", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
-                MessageBox.Show(@"Inputs are empty!", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            {
+                if (string.IsNullOrWhiteSpace(FirstNameBox.Text) || string.IsNullOrWhiteSpace(LastNameBox.Text))
+                {
+                    MessageBox.Show(@"Inputs are empty!", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    _authors.UpdateAuthor($"{_oldFirstName} {_oldLastName}", $"{FirstNameBox.Text} {LastNameBox.Text}" );
+                    Close();
+                }
+            }
         }
 
         private void FirstNameBox_KeyPress(object sender, KeyPressEventArgs e)

@@ -8,12 +8,12 @@ namespace Internship_7_Library.Forms
 {
     public partial class EditBook : Form
     {
-        public EditBook(string bookName, BookRepository bookRepo, AuthorRepository authorRepo, PublisherRepository publisherRepo)
+        public EditBook(string bookName)
         {
             InitializeComponent();
-            _books = bookRepo;
-            _authors = authorRepo;
-            _publishers = publisherRepo;
+            _books = new BookRepository();
+            _authors = new AuthorRepository();
+            _publishers = new PublisherRepository();
             _oldName = bookName;
             foreach (var author in _authors.GetAuthorList().OrderBy(author => author.LastName))
                 AuthorComboBox.Items.Add(author);
@@ -45,17 +45,26 @@ namespace Internship_7_Library.Forms
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            
-            if (NameBox.Text != "" && AuthorComboBox.Text != "" && PublisherComboBox.Text != "" &&
-                PagesBox.Text != "" && NumberOfBooksBox.Text != "" && GenreComboBox.Text != "")
+
+            if (_books.GetBooksList().Any(book => book.Name == NameBox.Text))
             {
-                _books.UpdateBook(_oldName, NameBox.Text, _authors.ReadAuthor(AuthorComboBox.Text),
-                    _publishers.ReadPublisher(PublisherComboBox.Text), int.Parse(PagesBox.Text),
-                    int.Parse(NumberOfBooksBox.Text), (Genre)Enum.Parse(typeof(Genre), GenreComboBox.Text));
-                Close();
+                MessageBox.Show(@"Book already in database!", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
-                MessageBox.Show(@"Inputs are empty!", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            {
+                if (string.IsNullOrWhiteSpace(NameBox.Text) || string.IsNullOrWhiteSpace(AuthorComboBox.Text) ||
+                    string.IsNullOrWhiteSpace(PublisherComboBox.Text) || string.IsNullOrWhiteSpace(PagesBox.Text) ||
+                    !string.IsNullOrWhiteSpace(NumberOfBooksBox.Text) || string.IsNullOrWhiteSpace(GenreComboBox.Text))
+                {
+                    MessageBox.Show(@"Inputs are empty!", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    var genre = (Genre)Enum.Parse(typeof(Genre), GenreComboBox.Text);
+                    _books.UpdateBook(_oldName, NameBox.Text, _authors.ReadAuthor(AuthorComboBox.Text), _publishers.ReadPublisher(PublisherComboBox.Text), int.Parse(PagesBox.Text), int.Parse(NumberOfBooksBox.Text), genre);
+                    Close();
+                }
+            }
         }
 
         private void NameBox_KeyPress(object sender, KeyPressEventArgs e)

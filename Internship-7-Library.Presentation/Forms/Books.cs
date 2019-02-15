@@ -12,8 +12,6 @@ namespace Internship_7_Library.Forms
         {
             InitializeComponent();
             _books = new BookRepository();
-            _authors = new AuthorRepository();
-            _publishers = new PublisherRepository();
             _borrows = new BorrowRepository();
             _students = new StudentRepository();
             foreach (var book in _books.GetBooksList().OrderBy(book => book.Name))
@@ -23,8 +21,6 @@ namespace Internship_7_Library.Forms
         }
 
         private readonly BookRepository _books;
-        private readonly AuthorRepository _authors;
-        private readonly PublisherRepository _publishers;
         private readonly BorrowRepository _borrows;
         private readonly StudentRepository _students;
         private void LoadForm()
@@ -68,7 +64,7 @@ namespace Internship_7_Library.Forms
         }
         private void AddButton_Click(object sender, EventArgs e)
         {
-            var addBook = new AddBook(_books, _authors, _publishers);
+            var addBook = new AddBook();
             addBook.ShowDialog();
             LoadForm();
         }
@@ -101,7 +97,7 @@ namespace Internship_7_Library.Forms
         {
             if (BooksListBox.CheckedItems.Any())
             {
-                var editBook = new EditBook(BooksListBox.CheckedItems[0].ToString(), _books, _authors, _publishers);
+                var editBook = new EditBook(BooksListBox.CheckedItems[0].ToString());
                 editBook.ShowDialog();
             }
             LoadForm();

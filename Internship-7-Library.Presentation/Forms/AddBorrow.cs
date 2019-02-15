@@ -41,7 +41,11 @@ namespace Internship_7_Library.Forms
         }
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            if (StudentComboBox.Text != "" && BookComboBox.Text != "")
+            if (string.IsNullOrWhiteSpace(StudentComboBox.Text) || string.IsNullOrWhiteSpace(BookComboBox.Text))
+            {
+                MessageBox.Show(@"Inputs are empty!", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
             {
                 var borrowingStudent = _students.ReadStudent(StudentComboBox.Text);
                 var borrowedBook = _books.ReadBook(BookComboBox.Text);
@@ -68,8 +72,7 @@ namespace Internship_7_Library.Forms
                     Close();
                 }
             }
-            else
-                MessageBox.Show(@"Inputs are empty!", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
 
 
         }

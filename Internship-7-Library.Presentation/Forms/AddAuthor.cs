@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
 using Internship_7_Library.Domain.Repositories;
 
@@ -6,23 +7,34 @@ namespace Internship_7_Library.Forms
 {
     public partial class AddAuthor : Form
     {
-        public AddAuthor(AuthorRepository authorRepo)
+        public AddAuthor()
         {
             InitializeComponent();
-            _authors = authorRepo;
+            _authors = new AuthorRepository();
         }
 
         private readonly AuthorRepository _authors;
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            if (FirstNameBox.Text != "" && LastNameBox.Text != "")
+            if (_authors.GetAuthorList().Any(author => author.FirstName == FirstNameBox.Text) &&
+                _authors.GetAuthorList().Any(author => author.LastName == LastNameBox.Text))
             {
-                _authors.CreateAuthor(FirstNameBox.Text, LastNameBox.Text);
-                Close();
+                MessageBox.Show(@"Author already in database!", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
-                MessageBox.Show(@"Inputs are empty!", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            {
+                if (string.IsNullOrWhiteSpace(FirstNameBox.Text) && string.IsNullOrWhiteSpace(LastNameBox.Text))
+                {
+                    MessageBox.Show(@"Inputs are empty!", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    _authors.CreateAuthor(FirstNameBox.Text, LastNameBox.Text);
+                    Close();
+                }
+            }
+            
         }
 
         private void FirstNameBox_KeyPress(object sender, KeyPressEventArgs e)

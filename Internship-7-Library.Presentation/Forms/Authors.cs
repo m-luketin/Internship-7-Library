@@ -51,7 +51,7 @@ namespace Internship_7_Library.Forms
         }
         private void AddButton_Click(object sender, EventArgs e)
         {
-            var addAuthor = new AddAuthor(_authors);
+            var addAuthor = new AddAuthor();
             addAuthor.ShowDialog();
             LoadForm();
         }
@@ -101,7 +101,7 @@ namespace Internship_7_Library.Forms
             {
                 var name = _authors.ParseAuthor(AuthorsListBox.CheckedItems[0].ToString());
 
-                var editAuthor = new EditAuthor(name[0], name[1], _authors);
+                var editAuthor = new EditAuthor(name[0], name[1]);
                 editAuthor.ShowDialog();
             }
             
