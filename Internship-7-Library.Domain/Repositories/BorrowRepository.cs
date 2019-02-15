@@ -17,7 +17,7 @@ namespace Internship_7_Library.Domain.Repositories
 
         public void CreateBorrow(Student borrowingStudent, Book borrowedBook, DateTime dateOfBorrow)
         {
-            _context.Borrows.Add(new Borrow(borrowingStudent.StudentId, borrowedBook.BookId, dateOfBorrow));
+            _context.Borrows.Add(new Borrow(_context.Students.Find(borrowingStudent.StudentId), _context.Books.Find(borrowedBook.BookId), dateOfBorrow, null));
             _context.SaveChanges();
         }
 

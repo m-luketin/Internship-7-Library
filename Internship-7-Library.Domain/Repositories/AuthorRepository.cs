@@ -35,6 +35,7 @@ namespace Internship_7_Library.Domain.Repositories
             var flag = false;
             var oldName = ParseAuthor(fullOldName);
             var newName = ParseAuthor(fullNewName);
+
             foreach (var author in _context.Authors)
             {
                 if (oldName[0] == author.FirstName && oldName[1] == author.LastName)
@@ -53,12 +54,14 @@ namespace Internship_7_Library.Domain.Repositories
         {
             var flag = false;
             var name = ParseAuthor(fullName);
+
             if (ReadAuthor($"{name[0]} {name[1]}") != null)
             {
                 _context.Authors.Remove(ReadAuthor($"{name[0]} {name[1]}"));
                 _context.SaveChanges();
                 flag = true;
             }
+
             return flag;
         }
 

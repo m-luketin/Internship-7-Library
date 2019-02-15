@@ -22,6 +22,7 @@ namespace Internship_7_Library.Domain.Repositories
                 return false;
 
             _context.Students.Add(new Student(firstName, lastName, dateOfBirth, sex, grade));
+
             _context.SaveChanges();
             return true;
         }

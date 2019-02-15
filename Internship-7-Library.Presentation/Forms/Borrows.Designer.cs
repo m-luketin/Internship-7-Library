@@ -31,6 +31,7 @@
             this.AddBorrowButton = new System.Windows.Forms.Button();
             this.ReturnBookButton = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.BorrowsListBox = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,18 +63,31 @@
             // 
             this.pictureBox1.BackgroundImage = global::Internship_7_Library.Properties.Resources.kissclipart_book_clipart_book_computer_icons_reading_1eb6afe82712eba4;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(179, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(207, 16);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(193, 197);
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
+            // 
+            // BorrowsListBox
+            // 
+            this.BorrowsListBox.BackColor = System.Drawing.SystemColors.InfoText;
+            this.BorrowsListBox.ForeColor = System.Drawing.SystemColors.Window;
+            this.BorrowsListBox.FormattingEnabled = true;
+            this.BorrowsListBox.ItemHeight = 16;
+            this.BorrowsListBox.Location = new System.Drawing.Point(426, 16);
+            this.BorrowsListBox.Name = "BorrowsListBox";
+            this.BorrowsListBox.ScrollAlwaysVisible = true;
+            this.BorrowsListBox.Size = new System.Drawing.Size(216, 196);
+            this.BorrowsListBox.TabIndex = 3;
             // 
             // Borrows
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.ClientSize = new System.Drawing.Size(388, 223);
+            this.ClientSize = new System.Drawing.Size(660, 232);
+            this.Controls.Add(this.BorrowsListBox);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.ReturnBookButton);
             this.Controls.Add(this.AddBorrowButton);
@@ -89,5 +103,6 @@
         private System.Windows.Forms.Button AddBorrowButton;
         private System.Windows.Forms.Button ReturnBookButton;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ListBox BorrowsListBox;
     }
 }

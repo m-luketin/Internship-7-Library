@@ -14,13 +14,6 @@ namespace Internship_7_Library.Data.Entities.Models
             ReturnDate = returnDate;
         }
 
-        public Borrow(int studentId, int bookId, DateTime borrowDate)
-        {
-            StudentId = studentId;
-            BookId = bookId;
-            BorrowDate = borrowDate;
-        }
-
         public Borrow()
         {
 

@@ -1,9 +1,6 @@
 ﻿using Internship_7_Library.Data.Entities.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Configuration;
-using System.IO;
-using Microsoft.EntityFrameworkCore.Design;
-using Microsoft.Extensions.Configuration;
 
 namespace Internship_7_Library.Data.Entities
 {
@@ -31,7 +28,6 @@ namespace Internship_7_Library.Data.Entities
                 .HasOne(brw => brw.Student)
                 .WithMany(s => s.Borrows)
                 .HasForeignKey(brw => brw.StudentId);
-            
         }
     }
 }

@@ -21,19 +21,14 @@ namespace Internship_7_Library.Domain.Repositories
                 return false;
 
             _context.Books.Add(new Book(bookName, _context.Authors.Find(author.AuthorId), _context.Publishers.Find(publisher.PublisherId),numberOfPages, numberOfBooks, genre));
+
             _context.SaveChanges();
             return true;
         }
 
         public Book ReadBook(string nameToFind)
         {
-            foreach (var book in _context.Books)
-            {
-                if (book.Name == nameToFind)
-                    return book;
-            }
-
-            return null;
+            return Enumerable.FirstOrDefault(_context.Books, book => book.Name == nameToFind);
         }
 
         public bool UpdateBook(string oldName, string newName, Author newAuthor, Publisher newPublisher, int newNumberOfPages, int newNumberOfCopies, Genre newGenre)

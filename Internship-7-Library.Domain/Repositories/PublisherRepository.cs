@@ -21,19 +21,14 @@ namespace Internship_7_Library.Domain.Repositories
                 return false;
           
             _context.Publishers.Add(new Publisher(publisherNameToAdd));
+
             _context.SaveChanges();
             return true;
         }
 
         public Publisher ReadPublisher(string nameToFind)
         {
-           foreach (var publisher in _context.Publishers)
-           {
-               if (publisher.Name == nameToFind)
-                   return publisher;
-           }
-
-            return null;
+            return Enumerable.FirstOrDefault(_context.Publishers, publisher => publisher.Name == nameToFind);
         }
 
         public bool UpdatePublisher(string oldName, string newName)
