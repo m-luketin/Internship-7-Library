@@ -13,7 +13,7 @@ namespace Internship_7_Library.Forms
             InitializeComponent();
             _authors = new AuthorRepository();
             _books = new BookRepository();
-            foreach (var author in _authors.GetAuthorList().OrderBy(author => author.LastName))
+            foreach (var author in _authors.GetAuthorList().OrderBy(author => author.FirstName))
             {
                 AuthorsListBox.Items.Add(author);
             }

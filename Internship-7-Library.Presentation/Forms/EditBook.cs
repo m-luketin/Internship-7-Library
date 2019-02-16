@@ -46,7 +46,7 @@ namespace Internship_7_Library.Forms
         private void SaveButton_Click(object sender, EventArgs e)
         {
 
-            if (_books.GetBooksList().Any(book => book.Name == NameBox.Text))
+            if (_books.GetBooksList().Any(book => book.Name == NameBox.Text) && NameBox.Text != _oldName)
             {
                 MessageBox.Show(@"Book already in database!", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -54,7 +54,7 @@ namespace Internship_7_Library.Forms
             {
                 if (string.IsNullOrWhiteSpace(NameBox.Text) || string.IsNullOrWhiteSpace(AuthorComboBox.Text) ||
                     string.IsNullOrWhiteSpace(PublisherComboBox.Text) || string.IsNullOrWhiteSpace(PagesBox.Text) ||
-                    !string.IsNullOrWhiteSpace(NumberOfBooksBox.Text) || string.IsNullOrWhiteSpace(GenreComboBox.Text))
+                    string.IsNullOrWhiteSpace(NumberOfBooksBox.Text) || string.IsNullOrWhiteSpace(GenreComboBox.Text))
                 {
                     MessageBox.Show(@"Inputs are empty!", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }

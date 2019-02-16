@@ -39,7 +39,7 @@ namespace Internship_7_Library.Forms
             {
                 var rented = 0;
                 foreach (var borrow in _borrows.GetBorrowsList())
-                    if (_books.ReadBook(BooksListBox.CheckedItems[0].ToString()).BookId == borrow.BookId && borrow.ReturnDate == null)
+                    if (BooksListBox.CheckedItems[0].ToString() == borrow.Book.Name && borrow.ReturnDate == null)
                         rented++;
 
                 foreach (var book in _books.GetBooksList())
@@ -101,7 +101,6 @@ namespace Internship_7_Library.Forms
                 editBook.ShowDialog();
             }
             LoadForm();
-            LoadInfo();
         }
 
         private void BooksListBox_ItemCheck(object sender, ItemCheckEventArgs e)
@@ -118,7 +117,10 @@ namespace Internship_7_Library.Forms
 
         private void BooksListBox_MouseMove(object sender, MouseEventArgs e)
         {
-            LoadInfo();
+            if (BooksListBox.CheckedItems.Any())
+            {
+                LoadInfo();
+            }
         }
     }
 }
