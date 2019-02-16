@@ -28,7 +28,7 @@ namespace Internship_7_Library.Domain.Repositories
 
         public Book ReadBook(string nameToFind)
         {
-            return Enumerable.FirstOrDefault(_context.Books, book => book.Name == nameToFind);
+            return _context.Books.FirstOrDefault(book => book.Name == nameToFind);
         }
 
         public bool UpdateBook(string oldName, string newName, Author newAuthor, Publisher newPublisher, int newNumberOfPages, int newNumberOfCopies, Genre newGenre)

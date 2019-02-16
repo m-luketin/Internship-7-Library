@@ -27,7 +27,7 @@ namespace Internship_7_Library.Domain.Repositories
         public Author ReadAuthor(string fullName)
         {
             var name = ParseAuthor(fullName);
-            return Enumerable.FirstOrDefault(_context.Authors, author => name[0] == author.FirstName && name[1] == author.LastName);
+            return _context.Authors.FirstOrDefault(author => name[0] == author.FirstName && name[1] == author.LastName);
         }
 
         public bool UpdateAuthor(string fullOldName, string fullNewName)

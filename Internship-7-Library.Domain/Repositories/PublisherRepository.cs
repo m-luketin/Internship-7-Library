@@ -28,7 +28,7 @@ namespace Internship_7_Library.Domain.Repositories
 
         public Publisher ReadPublisher(string nameToFind)
         {
-            return Enumerable.FirstOrDefault(_context.Publishers, publisher => publisher.Name == nameToFind);
+            return _context.Publishers.FirstOrDefault(publisher => publisher.Name == nameToFind);
         }
 
         public bool UpdatePublisher(string oldName, string newName)
