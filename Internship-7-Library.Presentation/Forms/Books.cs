@@ -11,21 +11,19 @@ namespace Internship_7_Library.Forms
         public Books()
         {
             InitializeComponent();
-            _books = new BookRepository();
-            _borrows = new BorrowRepository();
-            _students = new StudentRepository();
-            foreach (var book in _books.GetBooksList().OrderBy(book => book.Name))
-            {
-                BooksListBox.Items.Add(book.ToString());
-            }
+            LoadForm();
         }
 
-        private readonly BookRepository _books;
-        private readonly BorrowRepository _borrows;
-        private readonly StudentRepository _students;
+        private BookRepository _books;
+        private BorrowRepository _borrows;
+        private StudentRepository _students;
         private void LoadForm()
         {
             BooksListBox.Items.Clear();
+
+            _books = new BookRepository();
+            _borrows = new BorrowRepository();
+            _students = new StudentRepository();
             foreach (var book in _books.GetBooksList().OrderBy(book => book.Name))
             {
                 BooksListBox.Items.Add(book.ToString());
